@@ -1,0 +1,5 @@
+{
+  "name": "FlytBase Ops Console",
+  "description": "A calm, zero-clutter command-first home for drone operations monitoring.",
+  "requestFramePermissions": []
+}
