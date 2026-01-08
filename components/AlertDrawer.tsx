@@ -1498,7 +1498,7 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                 </div>
 
                 {/* Auto Sync Footer */}
-                <div className="pt-6 pb-2">
+                <div className="pt-2 pb-1">
                     <div className="flex items-center justify-center gap-2 text-[11px] text-white/30 font-medium select-none">
                         <RefreshCw size={10} />
                         Information is synced automatically
