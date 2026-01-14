@@ -833,8 +833,8 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                     {/* Video Wall Grid */}
                     <div className="flex-1 p-4 overflow-hidden bg-black/40 shadow-inner">
                         <div className={`grid h-full gap-4 ${layout === 'focus' ? 'grid-cols-4 grid-rows-2' :
-                                layout === '2x2' ? 'grid-cols-2 grid-rows-2' :
-                                    'grid-cols-3 grid-rows-3'
+                            layout === '2x2' ? 'grid-cols-2 grid-rows-2' :
+                                'grid-cols-3 grid-rows-3'
                             }`}>
                             {feeds.slice(0, layout === '3x3' ? 9 : 4).map((feed, idx) => {
                                 return renderFeedTile(feed, idx);
@@ -980,8 +980,8 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                                                 }}
                                                 disabled={isPerimeterLocked}
                                                 className={`w-full p-3 rounded-lg flex items-center justify-between transition-all shadow-neu-flat hover:shadow-neu-hover ${isPerimeterLocked
-                                                        ? 'bg-emerald-500/10 border border-emerald-500/20 text-emerald-400'
-                                                        : 'bg-gradient-card hover:bg-white/5 border border-white/5 text-white'
+                                                    ? 'bg-emerald-500/10 border border-emerald-500/20 text-emerald-400'
+                                                    : 'bg-gradient-card hover:bg-white/5 border border-white/5 text-white'
                                                     }`}
                                             >
                                                 <span className="flex items-center gap-2">
@@ -1161,7 +1161,7 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                                     {!briefSent ? (
                                         <button
                                             onClick={handleSendBrief}
-                                            className="w-full h-10 bg-white text-app rounded-lg font-bold text-[13px] hover:bg-white/90 transition-all flex items-center justify-center gap-2 shadow-lg"
+                                            className="w-full h-10 bg-gradient-blue hover:opacity-90 text-white rounded-lg font-bold text-[13px] transition-all flex items-center justify-center gap-2 shadow-glow-blue border border-blue-400/20"
                                         >
                                             Send Briefing
                                         </button>
