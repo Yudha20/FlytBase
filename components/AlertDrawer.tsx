@@ -860,42 +860,43 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                                     <span className="text-white/20">•</span>
                                     <span>Zone B</span>
                                 </div>
-
-                                {/* Actionable Context Metrics Row */}
-                                <div className="flex items-center gap-3 text-[11px] font-medium mt-3">
-                                    {/* Tasks Drill */}
-                                    <button
-                                        onClick={() => setActiveMetricDrill(activeMetricDrill === 'tasks' ? null : 'tasks')}
-                                        className={`flex items-center gap-1.5 transition-colors ${activeMetricDrill === 'tasks' ? 'text-blue-400' : 'text-white/70 hover:text-white'}`}
-                                    >
-                                        <Crosshair size={12} className={activeMetricDrill === 'tasks' ? "text-blue-400" : "text-blue-400/70"} />
-                                        <span>Tasks: 2 active</span>
-                                    </button>
-                                    <div className="w-px h-3 bg-white/10" />
-
-                                    {/* Feeds Drill */}
-                                    <button
-                                        onClick={() => setActiveMetricDrill(activeMetricDrill === 'feeds' ? null : 'feeds')}
-                                        className={`flex items-center gap-1.5 transition-colors ${activeMetricDrill === 'feeds' ? 'text-white' : 'text-white/70 hover:text-white'}`}
-                                    >
-                                        <Video size={12} className="text-white/60" />
-                                        <span>Feeds: 4 live</span>
-                                    </button>
-                                    <div className="w-px h-3 bg-white/10" />
-
-                                    {/* Site Status Drill */}
-                                    <button
-                                        onClick={() => setActiveMetricDrill(activeMetricDrill === 'lock' ? null : 'lock')}
-                                        className="flex items-center gap-1.5 transition-colors hover:opacity-80"
-                                    >
-                                        <Shield size={12} className={isPerimeterLocked ? "text-emerald-400" : "text-white/40"} />
-                                        <span className="text-[10px]" style={{ color: isPerimeterLocked ? "#34d399" : "rgba(255,255,255,0.6)" }}>
-                                            Site: {isPerimeterLocked ? "Locked" : "Open"}
-                                        </span>
-                                    </button>
-                                </div>
                             </div>
-                            <button onClick={onClose} className="text-white/40 hover:text-white transition-transform hover:rotate-90"><X size={18} /></button>
+                            <button onClick={onClose} className="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-white/10 text-white/40 hover:text-white transition-colors">
+                                <X size={16} />
+                            </button>
+                        </div>
+                        {/* Actionable Context Metrics Row */}
+                        <div className="flex items-center gap-3 text-[11px] font-medium mt-3">
+                            {/* Tasks Drill */}
+                            <button
+                                onClick={() => setActiveMetricDrill(activeMetricDrill === 'tasks' ? null : 'tasks')}
+                                className={`flex items-center gap-1.5 transition-colors ${activeMetricDrill === 'tasks' ? 'text-blue-400' : 'text-white/70 hover:text-white'}`}
+                            >
+                                <Crosshair size={12} className={activeMetricDrill === 'tasks' ? "text-blue-400" : "text-blue-400/70"} />
+                                <span>Tasks: 2 active</span>
+                            </button>
+                            <div className="w-px h-3 bg-white/10" />
+
+                            {/* Feeds Drill */}
+                            <button
+                                onClick={() => setActiveMetricDrill(activeMetricDrill === 'feeds' ? null : 'feeds')}
+                                className={`flex items-center gap-1.5 transition-colors ${activeMetricDrill === 'feeds' ? 'text-white' : 'text-white/70 hover:text-white'}`}
+                            >
+                                <Video size={12} className="text-white/60" />
+                                <span>Feeds: 4 live</span>
+                            </button>
+                            <div className="w-px h-3 bg-white/10" />
+
+                            {/* Site Status Drill */}
+                            <button
+                                onClick={() => setActiveMetricDrill(activeMetricDrill === 'lock' ? null : 'lock')}
+                                className="flex items-center gap-1.5 transition-colors hover:opacity-80"
+                            >
+                                <Shield size={12} className={isPerimeterLocked ? "text-emerald-400" : "text-white/40"} />
+                                <span className="text-[10px]" style={{ color: isPerimeterLocked ? "#34d399" : "rgba(255,255,255,0.6)" }}>
+                                    Site: {isPerimeterLocked ? "Locked" : "Open"}
+                                </span>
+                            </button>
                         </div>
 
                         {/* Drill Down Views (Popover) */}
@@ -1292,8 +1293,8 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                             </div>
                         )}
                     </div>
-                </div>
-            </div>
+                </div >
+            </div >
         );
     }
 
