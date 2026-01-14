@@ -932,7 +932,26 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
 
                             <div className="w-px h-4 bg-white/10" />
 
-                            <span className="text-[12px] text-white/60">Confidence: <span className="text-white font-bold">High</span></span>
+                            <div className="group relative cursor-help">
+                                <span className="text-[12px] text-white/60">Confidence: <span className="text-white font-bold">High</span></span>
+                                <div className="absolute top-full right-0 mt-2 p-3 w-[240px] bg-[#1a1a1a] border border-white/10 rounded-lg shadow-2xl opacity-0 group-hover:opacity-100 pointer-events-none z-[100] transition-opacity">
+                                    <div className="text-[11px] font-bold text-white/40 uppercase tracking-wider mb-2">Why High Confidence</div>
+                                    <ul className="space-y-2">
+                                        <li className="flex items-start gap-2 text-[12px] text-white/80">
+                                            <CheckCircle2 size={12} className="text-blue-400 mt-0.5 shrink-0" />
+                                            Person detected in restricted zone
+                                        </li>
+                                        <li className="flex items-start gap-2 text-[12px] text-white/80">
+                                            <CheckCircle2 size={12} className="text-blue-400 mt-0.5 shrink-0" />
+                                            Vehicle signature mismatch
+                                        </li>
+                                        <li className="flex items-start gap-2 text-[12px] text-white/80">
+                                            <CheckCircle2 size={12} className="text-blue-400 mt-0.5 shrink-0" />
+                                            Sustained motion {'>'} 10s
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
