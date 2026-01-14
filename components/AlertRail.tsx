@@ -15,7 +15,7 @@ export const AlertRail: React.FC<AlertRailProps> = ({ alerts, selectedAlertId, o
   if (alerts.length === 0) return null;
 
   // Positioning Logic: Consistent margins
-  const rightPosition = isDrawerOpen ? '488px' : '24px';
+  const rightPosition = isDrawerOpen ? '500px' : '24px';
 
   return (
     <div 
