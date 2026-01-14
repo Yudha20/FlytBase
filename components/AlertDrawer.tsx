@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { X, Battery, Signal, Video, Maximize2, Radio, MapPin, ChevronRight, CheckCircle2, AlertTriangle, Crosshair, ArrowRight, Loader2, RefreshCw, LayoutGrid, Layout, Pin, MoreVertical, Send, MessageSquare, Share2, Camera, User, Play, Clock, Shield, Grid, Grid3x3, ChevronDown, Check, FileText, Flag, Plus, AlertCircle, Info, Mic, Download, Filter, Calendar, Search, Copy, Paperclip, Lock, Database, Globe, HelpCircle, Map, FolderOpen } from 'lucide-react';
+import { X, Battery, Signal, Video, Maximize2, Radio, MapPin, ChevronRight, CheckCircle2, AlertTriangle, Crosshair, ArrowRight, Loader2, RefreshCw, LayoutGrid, Layout, Pin, MoreVertical, Send, MessageSquare, Share2, Camera, User, Play, Clock, Shield, Grid, Grid3x3, ChevronDown, Check, FileText, Flag, Plus, AlertCircle, Info, Mic, Download, Filter, Calendar, Search, Copy, Paperclip, Lock, Database, Globe, HelpCircle, Map, FolderOpen, Minus } from 'lucide-react';
 import { Alert } from '../types';
 
 interface AlertDrawerProps {
@@ -67,6 +67,9 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
     // Phase 2 State
     const [viewMode, setViewMode] = useState<'details' | 'response'>('details');
     const [layout, setLayout] = useState<'focus' | '2x2' | '3x3'>('focus');
+    const [canvasMode, setCanvasMode] = useState<'feeds' | 'map'>('feeds');
+    const [mapZoom, setMapZoom] = useState(1);
+    const [mapOffset, setMapOffset] = useState({ x: 0, y: 0 });
     const [feeds, setFeeds] = useState<Feed[]>([]);
     const [showDronePresets, setShowDronePresets] = useState(false);
     const [timelineEvents, setTimelineEvents] = useState<any[]>([]);
@@ -142,6 +145,7 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                 setTasks([]);
                 setDeployedAssets([]);
                 setLatestUpdate('');
+                setCanvasMode('feeds');
             }
 
             // Handle Deep Link to Case File
@@ -382,6 +386,123 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                 <div className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse shadow-glow-blue" />
                 <span className="text-[12px] font-medium text-blue-100 truncate">{latestUpdate}</span>
                 <span className="text-[10px] text-blue-400/50 uppercase font-bold tracking-wider ml-auto">Now</span>
+            </div>
+        );
+    };
+
+
+    const handleZoomIn = () => setMapZoom(prev => Math.min(prev * 1.2, 3));
+    const handleZoomOut = () => setMapZoom(prev => Math.max(prev / 1.2, 0.5));
+    const handleResetMap = () => {
+        setMapZoom(1);
+        setMapOffset({ x: 0, y: 0 });
+    };
+
+    const renderTacticalMap = () => {
+        // Center point for scaling (approximate center of SVG viewbox 1000x800)
+        // We use a simple transform approach for this demo
+        return (
+            <div className="w-full h-full bg-[#0a0a0a] relative overflow-hidden group">
+                {/* 1. Base Map Layer (Darkened Satellite Style) */}
+                <div
+                    className="absolute inset-0 opacity-40 transition-transform duration-300 ease-out origin-center"
+                    style={{ transform: `scale(${mapZoom}) translate(${mapOffset.x}px, ${mapOffset.y}px)` }}
+                >
+                    <svg width="100%" height="100%" viewBox="0 0 1000 800" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="0.5" strokeOpacity="0.1" />
+                            </pattern>
+                        </defs>
+                        <rect width="100%" height="100%" fill="url(#grid)" />
+
+                        {/* Mock Terrain Features */}
+                        <path d="M 100 100 L 300 150 L 250 400 L 50 300 Z" fill="#1a1a1a" stroke="none" opacity="0.5" />
+                        <path d="M 600 50 L 800 100 L 750 300 L 550 250 Z" fill="#1a1a1a" stroke="none" opacity="0.5" />
+
+                        {/* Roads */}
+                        <path d="M 0 400 L 1000 400" stroke="#333" strokeWidth="20" />
+                        <path d="M 400 0 L 400 800" stroke="#333" strokeWidth="15" />
+                    </svg>
+                </div>
+
+                {/* 2. Operational Layers */}
+                <div
+                    className="absolute inset-0 transition-transform duration-300 ease-out origin-center"
+                    style={{ transform: `scale(${mapZoom}) translate(${mapOffset.x}px, ${mapOffset.y}px)` }}
+                >
+                    <svg width="100%" height="100%" viewBox="0 0 1000 800" className="drop-shadow-lg">
+
+                        {/* Soft Perimeter (Teal Circle) */}
+                        <circle cx="500" cy="400" r="250" fill="none" stroke="#2dd4bf" strokeWidth="1" strokeDasharray="4 4" opacity="0.3" />
+                        <circle cx="500" cy="400" r="250" fill="#2dd4bf" stroke="none" opacity="0.05" />
+
+                        {/* Incident Zone (Orange Polygon) */}
+                        <path d="M 600 300 L 800 320 L 780 450 L 580 400 Z" fill="#f97316" fillOpacity="0.1" stroke="#f97316" strokeWidth="2" strokeDasharray="5 5" className="animate-pulse-slow" />
+
+                        {/* Target Trajectory (Predicted) */}
+                        <path d="M 650 350 L 850 380" stroke="#f97316" strokeWidth="2" strokeDasharray="4 4" markerEnd="url(#arrow)" opacity="0.6" />
+
+                        {/* Drone Paths & Markers */}
+                        {deployedAssets.map((asset, i) => {
+                            // Mock positions based on index
+                            const x = i === 0 ? "620" : "500";
+                            const y = i === 0 ? "320" : "450";
+                            const color = i === 0 ? "#3b82f6" : "#ffffff"; // Drone 3 is blue, others white
+
+                            return (
+                                <g key={asset.id} className="transition-all duration-1000 ease-in-out">
+                                    {/* Path Breadcrumbs */}
+                                    {i === 0 && <path d="M 420 300 Q 520 250 620 320" fill="none" stroke={color} strokeWidth="2" strokeOpacity="0.3" strokeDasharray="4 4" />}
+
+                                    {/* Drone Icon Group */}
+                                    <g transform={`translate(${x}, ${y})`}>
+                                        {/* Range/Link Ring */}
+                                        <circle r="30" fill={color} fillOpacity="0.05" stroke={color} strokeWidth="1" strokeOpacity="0.2" className="animate-ping-slow" />
+
+                                        {/* Drone Body */}
+                                        <circle r="6" fill="#000" stroke={color} strokeWidth="2" />
+                                        <path d="M -8 -8 L 8 8 M 8 -8 L -8 8" stroke={color} strokeWidth="2" />
+
+                                        {/* Label */}
+                                        <rect x="15" y="-12" width="70" height="24" rx="4" fill="black" fillOpacity="0.8" stroke={color} strokeWidth="1" strokeOpacity="0.5" />
+                                        <text x="22" y="4" fill="white" fontSize="11" fontWeight="bold" fontFamily="monospace">{asset.name}</text>
+                                    </g>
+                                </g>
+                            )
+                        })}
+
+                    </svg>
+                </div>
+
+                {/* Map Controls Overlay - Neomorphic Style */}
+                <div className="absolute bottom-6 right-6 flex flex-col gap-3">
+                    <div className="flex flex-col gap-1 bg-gradient-card p-1 rounded-lg border border-white/10 shadow-neu-flat">
+                        <button
+                            onClick={handleZoomIn}
+                            className="w-8 h-8 rounded flex items-center justify-center text-white/70 hover:text-white hover:bg-white/5 active:bg-black/20 transition-all border border-transparent hover:border-white/5 active:shadow-inner"
+                            title="Zoom In"
+                        >
+                            <Plus size={16} />
+                        </button>
+                        <div className="h-px bg-white/5 mx-1" />
+                        <button
+                            onClick={handleZoomOut}
+                            className="w-8 h-8 rounded flex items-center justify-center text-white/70 hover:text-white hover:bg-white/5 active:bg-black/20 transition-all border border-transparent hover:border-white/5 active:shadow-inner"
+                            title="Zoom Out"
+                        >
+                            <Minus size={16} />
+                        </button>
+                    </div>
+
+                    <button
+                        onClick={handleResetMap}
+                        className="w-10 h-10 bg-gradient-card border border-white/10 rounded-lg flex items-center justify-center text-blue-400 hover:text-white shadow-neu-flat hover:shadow-neu-hover active:scale-95 transition-all"
+                        title="Precise Location (Reset)"
+                    >
+                        <Crosshair size={18} />
+                    </button>
+                </div>
             </div>
         );
     };
@@ -887,48 +1008,73 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                 {/* CARD A: LIVE FEEDS CANVAS */}
                 <div className="flex-1 bg-surface border border-white/5 rounded-xl overflow-hidden flex flex-col shadow-neu-flat relative bg-gradient-card">
                     {/* Header Row */}
-                    <div className="h-[60px] px-5 flex items-center justify-between border-b border-white/5 bg-surface/50 shrink-0">
+                    <div className="h-[60px] border-b border-white/5 flex items-center justify-between px-5 bg-surface/50 shrink-0">
                         <div className="flex items-center gap-3">
-                            <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse shadow-glow-red" />
-                            <span className="text-[14px] font-bold text-white tracking-wide">LIVE FEEDS</span>
+                            <div className="flex items-center gap-2">
+                                <div className={`w-2 h-2 rounded-full ${isRecording ? 'bg-red-500 animate-pulse shadow-glow-red' : 'bg-zinc-600'}`} />
+                                {/* Segmented Control for Mode */}
+                                <div className="flex bg-black/20 rounded-lg p-1 border border-white/5 ml-2">
+                                    <button
+                                        onClick={() => setCanvasMode('feeds')}
+                                        className={`px-3 py-0.5 rounded text-[11px] font-bold uppercase tracking-wider transition-all ${canvasMode === 'feeds' ? 'bg-surface text-white shadow-neu-flat border border-white/10' : 'text-white/40 hover:text-white/60'}`}
+                                    >
+                                        Live Feeds
+                                    </button>
+                                    <button
+                                        onClick={() => setCanvasMode('map')}
+                                        className={`px-3 py-0.5 rounded text-[11px] font-bold uppercase tracking-wider transition-all ${canvasMode === 'map' ? 'bg-blue-500/10 text-blue-400 shadow-neu-flat border border-blue-500/20' : 'text-white/40 hover:text-white/60'}`}
+                                    >
+                                        Tactical Map
+                                    </button>
+                                </div>
+                            </div>
                         </div>
 
-                        {/* Layout Switcher - Standardized Segmented Control */}
-                        <div className="bg-black/20 p-1 rounded-lg flex border border-white/5">
-                            <button
-                                onClick={() => setLayout('focus')}
-                                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md transition-all ${layout === 'focus' ? 'bg-surface text-white shadow-neu-flat border border-white/10' : 'text-white/40 hover:text-white/60 hover:bg-white/5 border border-transparent'}`}
-                            >
-                                <Layout size={14} />
-                                <span className="text-[11px] font-medium">Focus</span>
-                            </button>
-                            <button
-                                onClick={() => setLayout('2x2')}
-                                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md transition-all ${layout === '2x2' ? 'bg-surface text-white shadow-neu-flat border border-white/10' : 'text-white/40 hover:text-white/60 hover:bg-white/5 border border-transparent'}`}
-                            >
-                                <LayoutGrid size={14} />
-                                <span className="text-[11px] font-medium">2×2</span>
-                            </button>
-                            <button
-                                onClick={() => setLayout('3x3')}
-                                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md transition-all ${layout === '3x3' ? 'bg-surface text-white shadow-neu-flat border border-white/10' : 'text-white/40 hover:text-white/60 hover:bg-white/5 border border-transparent'}`}
-                            >
-                                <Grid3x3 size={14} />
-                                <span className="text-[11px] font-medium">3×3</span>
-                            </button>
-                        </div>
+                        {/* Right Controls - Only show Layout Toggle when in Feeds mode */}
+                        {canvasMode === 'feeds' && (
+                            <div className="flex bg-black/20 rounded-lg p-1 border border-white/5">
+                                <button
+                                    onClick={() => setLayout('focus')}
+                                    className={`px-3 py-1.5 rounded-md flex items-center gap-1.5 transition-all
+                                ${layout === 'focus' ? 'bg-surface text-white shadow-neu-flat border border-white/10' : 'text-white/40 hover:text-white/60 hover:bg-white/5 border border-transparent'}`}
+                                >
+                                    <Layout size={14} />
+                                    <span className="text-[11px] font-medium">Focus</span>
+                                </button>
+                                <button
+                                    onClick={() => setLayout('2x2')}
+                                    className={`px-3 py-1.5 rounded-md flex items-center gap-1.5 transition-all
+                                ${layout === '2x2' ? 'bg-surface text-white shadow-neu-flat border border-white/10' : 'text-white/40 hover:text-white/60 hover:bg-white/5 border border-transparent'}`}
+                                >
+                                    <Grid size={14} />
+                                    <span className="text-[11px] font-medium">2×2</span>
+                                </button>
+                                <button
+                                    onClick={() => setLayout('3x3')}
+                                    className={`px-3 py-1.5 rounded-md flex items-center gap-1.5 transition-all
+                                ${layout === '3x3' ? 'bg-surface text-white shadow-neu-flat border border-white/10' : 'text-white/40 hover:text-white/60 hover:bg-white/5 border border-transparent'}`}
+                                >
+                                    <Grid3x3 size={14} />
+                                    <span className="text-[11px] font-medium">3×3</span>
+                                </button>
+                            </div>
+                        )}
                     </div>
 
-                    {/* Video Wall Grid */}
-                    <div className="flex-1 p-4 overflow-hidden bg-black/40 shadow-inner">
-                        <div className={`grid h-full gap-4 ${layout === 'focus' ? 'grid-cols-4 grid-rows-2' :
-                            layout === '2x2' ? 'grid-cols-2 grid-rows-2' :
-                                'grid-cols-3 grid-rows-3'
-                            }`}>
-                            {feeds.slice(0, layout === '3x3' ? 9 : 4).map((feed, idx) => {
-                                return renderFeedTile(feed, idx);
-                            })}
-                        </div>
+                    <LatestUpdateBanner />
+
+                    {/* Content Area */}
+                    <div className="flex-1 overflow-hidden relative p-1">
+                        {canvasMode === 'feeds' ? (
+                            <div className={`grid gap-1 w-full h-full p-1 transition-all duration-300 ${layout === 'focus' ? 'grid-cols-4 grid-rows-3' :
+                                layout === '2x2' ? 'grid-cols-2 grid-rows-2' :
+                                    'grid-cols-3 grid-rows-3'
+                                }`}>
+                                {feeds.map((feed, index) => renderFeedTile(feed, index))}
+                            </div>
+                        ) : (
+                            renderTacticalMap()
+                        )}
                     </div>
                 </div>
 
