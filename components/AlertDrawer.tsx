@@ -1307,17 +1307,7 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                     <div className="flex flex-col gap-2">
                         <h2 className="text-[18px] font-semibold text-white leading-tight tracking-tight">{alert.type}</h2>
                         <div className="flex items-center gap-2 text-[13px] text-white/60 font-medium flex-wrap">
-                            <button
-                                onClick={() => {
-                                    navigator.clipboard.writeText(`${alert.site} (Site ${alert.site === 'Site A' ? '1' : '2'})`);
-                                    onShowToast(`Copied ${alert.site}`);
-                                }}
-                                className="hover:text-white transition-colors cursor-pointer group/site flex items-center gap-1.5"
-                                title="Click to copy"
-                            >
-                                <span>{alert.site} (Site {alert.site === 'Site A' ? '1' : '2'})</span>
-                                <Copy size={10} className="opacity-0 group-hover/site:opacity-100 transition-opacity" />
-                            </button>
+                            <span>{alert.site}</span>
                             <span className="text-white/20">•</span>
                             <span>Zone B</span>
                             <span className="text-white/20">•</span>
