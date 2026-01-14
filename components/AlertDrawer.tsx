@@ -997,6 +997,12 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                                                         <div className="flex items-center gap-1 group/tooltip relative">
                                                             <span className="text-[9px] bg-purple-500/20 text-purple-300 border border-purple-500/20 px-1.5 py-0.5 rounded uppercase tracking-wide">Suggested</span>
                                                             <HelpCircle size={12} className="text-white/30 cursor-help" />
+                                                            <div className="absolute bottom-full right-0 mb-2 p-3 w-[200px] bg-[#1a1a1a] border border-white/10 rounded-lg shadow-2xl opacity-0 group-hover/tooltip:opacity-100 pointer-events-none transition-opacity z-50">
+                                                                <div className="text-[11px] font-bold text-white/40 uppercase tracking-wider mb-1">Reasoning</div>
+                                                                <p className="text-[12px] text-white/80 leading-snug">
+                                                                    Intruder heading towards main exit. Lockout recommended to contain threat.
+                                                                </p>
+                                                            </div>
                                                         </div>
                                                     )}
                                                 </div>
