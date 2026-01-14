@@ -322,7 +322,7 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
 
     // Determine container styles based on mode
     const containerClasses = viewMode === 'response'
-        ? 'fixed top-[88px] bottom-[24px] left-[24px] right-[24px] w-auto z-40 flex gap-4'
+        ? 'fixed top-[88px] bottom-[24px] left-[24px] right-[24px] w-auto z-40 flex gap-4 border-none shadow-none'
         : 'fixed top-[88px] bottom-[24px] w-[460px] right-[24px] z-40 flex flex-col bg-surface border border-subtle rounded-xl shadow-neu-flat overflow-hidden bg-gradient-surface';
 
     const animationClass = isOpen ? (viewMode === 'response' ? 'animate-in fade-in zoom-in-95 duration-300' : 'animate-pulse-twice') : '';
@@ -793,7 +793,7 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
     // PHASE 2: TABBED WORKSPACE (Response Mode)
     if (viewMode === 'response') {
         return (
-            <div className={containerClasses + " " + animationClass}>
+            <div key="response-view" className={containerClasses + " " + animationClass}>
 
                 {/* CARD A: LIVE FEEDS CANVAS */}
                 <div className="flex-1 bg-surface border border-white/5 rounded-xl overflow-hidden flex flex-col shadow-neu-flat relative bg-gradient-card">
