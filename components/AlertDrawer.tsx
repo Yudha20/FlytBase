@@ -29,6 +29,16 @@ interface Task {
     eta?: string;
 }
 
+interface Asset {
+    id: string;
+    name: string;
+    status: string;
+    intent: string;
+    battery: string;
+    link: string;
+    mode: string;
+}
+
 interface EvidenceItem {
     id: string;
     time: string;
@@ -74,6 +84,7 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
 
     const [latestUpdate, setLatestUpdate] = useState<string>('');
     const [tasks, setTasks] = useState<Task[]>([]);
+    const [deployedAssets, setDeployedAssets] = useState<Asset[]>([]);
     const [isRecording, setIsRecording] = useState(false);
 
     // Lock State
@@ -112,12 +123,24 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                     { id: 't1', name: 'Track Target', assignee: 'Drone 3', status: 'Active' },
                     { id: 't2', name: 'Evidence Capture', assignee: 'System', status: 'Active' }
                 ]);
+                setDeployedAssets([
+                    {
+                        id: 'd3',
+                        name: 'Drone 3',
+                        status: 'Airborne',
+                        intent: 'Tracking Target A',
+                        battery: '72%',
+                        link: 'Good',
+                        mode: 'Locked'
+                    }
+                ]);
                 setLatestUpdate('Target moving East → likely Gate 3 in ~45s (High)');
                 setActiveTab('response'); // Default tab
             } else {
                 setViewMode('details');
                 setIsRecording(false);
                 setTasks([]);
+                setDeployedAssets([]);
                 setLatestUpdate('');
             }
 
@@ -196,6 +219,17 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
             { id: 't1', name: 'Track Target', assignee: 'Drone 3', status: 'Active' },
             { id: 't2', name: 'Evidence Capture', assignee: 'System', status: 'Active' }
         ]);
+        setDeployedAssets([
+            {
+                id: 'd3',
+                name: 'Drone 3',
+                status: 'Airborne',
+                intent: 'Tracking Target A',
+                battery: '72%',
+                link: 'Good',
+                mode: 'Locked'
+            }
+        ]);
         setLatestUpdate('Target moving East → likely Gate 3 in ~45s (High)');
 
         addLogEntry("Threat confirmed → Response protocols active", "Operator", "incident");
@@ -212,6 +246,18 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
             eta: '12s'
         };
         setTasks(prev => [...prev, newTask]);
+        setDeployedAssets(prev => [
+            ...prev,
+            {
+                id: `d-${Date.now()}`,
+                name: 'Drone 2',
+                status: 'En route',
+                intent: preset,
+                battery: '98%',
+                link: 'Good',
+                mode: 'Auto'
+            }
+        ]);
         setLatestUpdate(`Drone 2 deployed for ${preset}`);
         addLogEntry(`Drone 2 deployed → ${preset}`, "System", "drone");
         onShowToast(`${preset} started • Drone 2 assigned`);
@@ -430,6 +476,49 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                                 </div>
                             )}
                         </div>
+                    </div>
+                </div>
+            </div>
+        );
+    };
+
+    const renderAssetCard = (asset: Asset, isPrimary: boolean = false) => {
+        return (
+            <div key={asset.id} className="bg-gradient-card border border-white/5 rounded-xl p-4 shadow-neu-flat">
+                <div className="flex justify-between items-center mb-4">
+                    <div className="flex items-center gap-3">
+                        <span className="text-[15px] font-semibold text-white">{asset.name}</span>
+                        <span className={`text-[11px] font-bold px-2 py-0.5 rounded border shadow-glow-blue ${asset.status === 'Airborne' ? 'bg-blue-500/20 text-blue-400 border-blue-500/20' :
+                            asset.status === 'En route' ? 'bg-white/10 text-white/60 border-white/10' :
+                                'bg-emerald-500/20 text-emerald-400 border-emerald-500/20'
+                            }`}>
+                            {asset.status}
+                        </span>
+                    </div>
+                    <span className="text-[12px] text-white/60">{asset.intent}</span>
+                </div>
+
+                <div className="grid grid-cols-3 gap-2">
+                    <div className="bg-black/20 rounded-lg p-2 border border-white/5 shadow-inner">
+                        <div className="flex items-center gap-1.5 mb-1">
+                            <Battery size={10} className="text-white/40" />
+                            <span className="text-[10px] text-white/40 font-bold uppercase">BAT</span>
+                        </div>
+                        <div className="text-[14px] font-semibold text-white">{asset.battery}</div>
+                    </div>
+                    <div className="bg-black/20 rounded-lg p-2 border border-white/5 shadow-inner">
+                        <div className="flex items-center gap-1.5 mb-1">
+                            <Signal size={10} className="text-white/40" />
+                            <span className="text-[10px] text-white/40 font-bold uppercase">LINK</span>
+                        </div>
+                        <div className="text-[14px] font-semibold text-emerald-400">{asset.link}</div>
+                    </div>
+                    <div className="bg-black/20 rounded-lg p-2 border border-white/5 shadow-inner">
+                        <div className="flex items-center gap-1.5 mb-1">
+                            <Crosshair size={10} className="text-white/40" />
+                            <span className="text-[10px] text-white/40 font-bold uppercase">MODE</span>
+                        </div>
+                        <div className="text-[14px] font-semibold text-white">{asset.mode}</div>
                     </div>
                 </div>
             </div>
@@ -1051,43 +1140,23 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                                     )}
                                 </div>
                                 <div className="w-full h-px bg-white/5" />
-                                {/* Assigned Asset Card */}
-                                <div className="space-y-3">
-                                    <h3 className="text-[11px] font-bold uppercase tracking-wider text-white/40">Primary Asset</h3>
-                                    <div className="bg-gradient-card border border-white/5 rounded-xl p-4 shadow-neu-flat">
-                                        <div className="flex justify-between items-center mb-4">
-                                            <div className="flex items-center gap-3">
-                                                <span className="text-[15px] font-semibold text-white">Drone 3</span>
-                                                <span className="text-[11px] font-bold bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded border border-blue-500/20 shadow-glow-blue">Airborne</span>
-                                            </div>
-                                            {/* Intent */}
-                                            <span className="text-[12px] text-white/60">Tracking Target A</span>
+                                {/* Assets Section */}
+                                <div className="space-y-4">
+                                    {deployedAssets.length > 0 && (
+                                        <div className="space-y-3">
+                                            <h3 className="text-[11px] font-bold uppercase tracking-wider text-white/40">Primary Asset</h3>
+                                            {renderAssetCard(deployedAssets[0], true)}
                                         </div>
+                                    )}
 
-                                        <div className="grid grid-cols-3 gap-2">
-                                            <div className="bg-black/20 rounded-lg p-2 border border-white/5 shadow-inner">
-                                                <div className="flex items-center gap-1.5 mb-1">
-                                                    <Battery size={10} className="text-white/40" />
-                                                    <span className="text-[10px] text-white/40 font-bold uppercase">BAT</span>
-                                                </div>
-                                                <div className="text-[14px] font-semibold text-white">72%</div>
-                                            </div>
-                                            <div className="bg-black/20 rounded-lg p-2 border border-white/5 shadow-inner">
-                                                <div className="flex items-center gap-1.5 mb-1">
-                                                    <Signal size={10} className="text-white/40" />
-                                                    <span className="text-[10px] text-white/40 font-bold uppercase">LINK</span>
-                                                </div>
-                                                <div className="text-[14px] font-semibold text-emerald-400">Good</div>
-                                            </div>
-                                            <div className="bg-black/20 rounded-lg p-2 border border-white/5 shadow-inner">
-                                                <div className="flex items-center gap-1.5 mb-1">
-                                                    <Crosshair size={10} className="text-white/40" />
-                                                    <span className="text-[10px] text-white/40 font-bold uppercase">MODE</span>
-                                                </div>
-                                                <div className="text-[14px] font-semibold text-white">Locked</div>
+                                    {deployedAssets.length > 1 && (
+                                        <div className="space-y-3">
+                                            <h3 className="text-[11px] font-bold uppercase tracking-wider text-white/40">Additional Assets</h3>
+                                            <div className="space-y-3">
+                                                {deployedAssets.slice(1).map(asset => renderAssetCard(asset))}
                                             </div>
                                         </div>
-                                    </div>
+                                    )}
                                 </div>
                                 {/* Task Ledger */}
                                 <div className="space-y-2">
