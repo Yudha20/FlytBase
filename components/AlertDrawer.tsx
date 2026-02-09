@@ -1169,9 +1169,10 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                             <div className="w-px h-4 bg-white/10" />
 
                             <div className="group relative cursor-help">
-                                <span className="text-[12px] text-white/60">Confidence: <span className="text-white font-bold">High</span></span>
+                                <span className="text-[12px] text-white/60 border-b border-dashed border-white/20">Confidence: <span className="text-white font-bold">{confidenceLabel}</span></span>
                                 <div className="absolute top-full right-0 mt-2 p-3 w-[240px] bg-[#1a1a1a] border border-white/10 rounded-lg shadow-2xl opacity-0 group-hover:opacity-100 pointer-events-none z-[100] transition-opacity">
                                     <div className="text-[12px] font-bold text-white/40 uppercase tracking-wider mb-2">Why High Confidence</div>
+                                    <div className="w-full h-px bg-white/10 my-2" />
                                     <ul className="space-y-2">
                                         <li className="flex items-start gap-2 text-[12px] text-white/80">
                                             <CheckCircle2 size={12} className="text-blue-400 mt-0.5 shrink-0" />
@@ -1249,16 +1250,18 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                                                     {isPerimeterLocked ? (
                                                         <span className="text-[12px] font-bold uppercase tracking-wider bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded shadow-sm">Locked</span>
                                                     ) : (
-                                                        <div className="flex items-center gap-1 group/tooltip relative">
-                                                            <span className="text-[8px] bg-purple-500/20 text-purple-300 border border-purple-500/20 px-1.5 py-0.5 rounded uppercase tracking-wide">Suggested</span>
-                                                            <HelpCircle size={12} className="text-white/30 cursor-help" />
-                                                            <div className="absolute bottom-full right-0 mb-2 p-3 w-[200px] bg-[#1a1a1a] border border-white/10 rounded-lg shadow-2xl opacity-0 group-hover/tooltip:opacity-100 pointer-events-none transition-opacity z-50">
-                                                                <div className="text-[12px] font-bold text-white/40 uppercase tracking-wider mb-1">Reasoning</div>
-                                                                <p className="text-[12px] text-white/80 leading-snug">
-                                                                    Intruder heading towards main exit. Lockout recommended to contain threat.
-                                                                </p>
+                                                        <>
+                                                            <div className="flex items-center gap-1 group/tooltip relative">
+                                                                <span className="text-[8px] bg-purple-500/20 text-purple-300 border border-purple-500/20 px-1.5 py-0.5 rounded uppercase tracking-wide border-b border-dashed border-purple-500/40 cursor-help">Suggested</span>
+                                                                <div className="absolute bottom-full right-0 mb-2 p-3 w-[200px] bg-[#1a1a1a] border border-white/10 rounded-lg shadow-2xl opacity-0 group-hover/tooltip:opacity-100 pointer-events-none transition-opacity z-50">
+                                                                    <div className="text-[12px] font-bold text-white/40 uppercase tracking-wider mb-1">Reasoning</div>
+                                                                    <p className="text-[12px] text-white/80 leading-snug">
+                                                                        Intruder heading towards main exit. Lockout recommended to contain threat.
+                                                                    </p>
+                                                                </div>
                                                             </div>
-                                                        </div>
+                                                            <ArrowRight size={16} className="opacity-60" />
+                                                        </>
                                                     )}
                                                 </div>
                                             </button>
@@ -1527,9 +1530,10 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                             <span>Zone B</span>
                             <span className="text-white/20">•</span>
                             <div className="group relative cursor-help">
-                                <span className="text-white/80 border-b border-dashed border-white/20">Conf: {confidenceLabel}</span>
+                                <span className="text-white/80 border-b border-dashed border-white/20">Confidence: {confidenceLabel}</span>
                                 <div className="absolute top-full left-0 mt-2 p-3 w-[240px] bg-[#1a1a1a] border border-white/10 rounded-lg shadow-2xl opacity-0 group-hover:opacity-100 pointer-events-none z-[100] transition-opacity">
                                     <div className="text-[12px] font-bold text-white/40 uppercase tracking-wider mb-2">Why High Confidence</div>
+                                    <div className="w-full h-px bg-white/10 my-2" />
                                     <ul className="space-y-2">
                                         <li className="flex items-start gap-2 text-[12px] text-white/80">
                                             <CheckCircle2 size={12} className="text-blue-400 mt-0.5 shrink-0" />
