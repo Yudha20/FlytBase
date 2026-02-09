@@ -385,7 +385,7 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
             <div className="bg-blue-500/5 border-b border-blue-500/20 px-5 py-2 flex items-center gap-3 shadow-[inset_0_2px_10px_rgba(59,130,246,0.1)]">
                 <div className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse shadow-glow-blue" />
                 <span className="text-[12px] font-medium text-blue-100 truncate">{latestUpdate}</span>
-                <span className="text-[10px] text-blue-400/50 uppercase font-bold tracking-wider ml-auto">Now</span>
+                <span className="text-[12px] text-blue-400/50 uppercase font-bold tracking-wider ml-auto">Now</span>
             </div>
         );
     };
@@ -544,7 +544,7 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                     <div className="absolute inset-0 flex items-center justify-center">
                         {showRedBox ? (
                             <div className="absolute top-[20%] left-[35%] w-[30%] h-[60%] border-2 border-red-500 rounded-sm shadow-glow-red">
-                                <div className="absolute -top-[21px] left-[-2px] bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-t-sm uppercase tracking-wider shadow-lg">
+                                <div className="absolute -top-[20px] left-[-2px] bg-red-500 text-white text-[12px] font-bold px-1.5 py-0.5 rounded-t-sm uppercase tracking-wider shadow-lg">
                                     Person
                                 </div>
                             </div>
@@ -558,16 +558,16 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                 ) : (
                     <div className="absolute inset-0 flex flex-col items-center justify-center bg-zinc-900">
                         <Loader2 className="animate-spin text-white/30 mb-2" />
-                        <span className="text-[11px] text-white/50 uppercase tracking-wider">Connecting...</span>
+                        <span className="text-[12px] text-white/50 uppercase tracking-wider">Connecting...</span>
                     </div>
                 )}
 
                 {/* Header: Live Badge + Source */}
                 <div className="absolute top-4 left-4 flex items-center gap-3 z-10 pointer-events-none">
-                    <span className={`text-[11px] px-2 py-0.5 rounded-sm uppercase font-bold tracking-wider shadow-lg ${feed.status === 'live' ? 'bg-red-600 text-white animate-pulse' : 'bg-white/10 text-white/50'}`}>
+                    <span className={`text-[12px] px-2 py-0.5 rounded-sm uppercase font-bold tracking-wider shadow-lg ${feed.status === 'live' ? 'bg-red-600 text-white animate-pulse' : 'bg-white/10 text-white/50'}`}>
                         {feed.status === 'live' ? 'LIVE' : 'LINK'}
                     </span>
-                    <span className="text-[13px] font-medium text-white tracking-wide drop-shadow-md">
+                    <span className="text-[12px] font-medium text-white tracking-wide drop-shadow-md">
                         {feed.source}
                     </span>
                 </div>
@@ -586,7 +586,7 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                 {/* Footer */}
                 <div className="absolute bottom-4 left-4 right-4 pointer-events-none">
                     <div className="flex flex-col gap-1">
-                        <span className="text-[15px] font-bold text-white tracking-tight drop-shadow-md">{feed.targetTag || feed.source}</span>
+                        <span className="text-[16px] font-bold text-white tracking-tight drop-shadow-md">{feed.targetTag || feed.source}</span>
                         <div className="flex items-center gap-2">
                             <span className="text-[12px] text-white/50 font-mono tracking-wide drop-shadow-md">{timeStr}</span>
                             {feed.status === 'live' && isRecording && (
@@ -608,8 +608,8 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
             <div key={asset.id} className="bg-gradient-card border border-white/5 rounded-xl p-4 shadow-neu-flat">
                 <div className="flex justify-between items-center mb-4">
                     <div className="flex items-center gap-3">
-                        <span className="text-[15px] font-semibold text-white">{asset.name}</span>
-                        <span className={`text-[11px] font-bold px-2 py-0.5 rounded border shadow-glow-blue ${asset.status === 'Airborne' ? 'bg-blue-500/20 text-blue-400 border-blue-500/20' :
+                        <span className="text-[16px] font-semibold text-white">{asset.name}</span>
+                        <span className={`text-[12px] font-bold px-2 py-0.5 rounded border shadow-glow-blue ${asset.status === 'Airborne' ? 'bg-blue-500/20 text-blue-400 border-blue-500/20' :
                             asset.status === 'En route' ? 'bg-white/10 text-white/60 border-white/10' :
                                 'bg-emerald-500/20 text-emerald-400 border-emerald-500/20'
                             }`}>
@@ -623,23 +623,23 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                     <div className="bg-black/20 rounded-lg p-2 border border-white/5 shadow-inner">
                         <div className="flex items-center gap-1.5 mb-1">
                             <Battery size={10} className="text-white/40" />
-                            <span className="text-[10px] text-white/40 font-bold uppercase">BAT</span>
+                            <span className="text-[12px] text-white/40 font-bold uppercase">BAT</span>
                         </div>
-                        <div className="text-[14px] font-semibold text-white">{asset.battery}</div>
+                        <div className="text-[16px] font-semibold text-white">{asset.battery}</div>
                     </div>
                     <div className="bg-black/20 rounded-lg p-2 border border-white/5 shadow-inner">
                         <div className="flex items-center gap-1.5 mb-1">
                             <Signal size={10} className="text-white/40" />
-                            <span className="text-[10px] text-white/40 font-bold uppercase">LINK</span>
+                            <span className="text-[12px] text-white/40 font-bold uppercase">LINK</span>
                         </div>
-                        <div className="text-[14px] font-semibold text-emerald-400">{asset.link}</div>
+                        <div className="text-[16px] font-semibold text-emerald-400">{asset.link}</div>
                     </div>
                     <div className="bg-black/20 rounded-lg p-2 border border-white/5 shadow-inner">
                         <div className="flex items-center gap-1.5 mb-1">
                             <Crosshair size={10} className="text-white/40" />
-                            <span className="text-[10px] text-white/40 font-bold uppercase">MODE</span>
+                            <span className="text-[12px] text-white/40 font-bold uppercase">MODE</span>
                         </div>
-                        <div className="text-[14px] font-semibold text-white">{asset.mode}</div>
+                        <div className="text-[16px] font-semibold text-white">{asset.mode}</div>
                     </div>
                 </div>
             </div>
@@ -658,7 +658,7 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                 <div className="h-[72px] px-6 flex items-center justify-between border-b border-white/5 bg-surface shrink-0">
                     <div className="flex items-center gap-4">
                         <div className="flex flex-col">
-                            <h2 className="text-[18px] font-semibold text-white flex items-center gap-3">
+                            <h2 className="text-[20px] font-semibold text-white flex items-center gap-3">
                                 <FileText className="text-blue-400" size={20} />
                                 Case File: {alert.id}
                             </h2>
@@ -672,9 +672,9 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                         <div className="flex items-center gap-2">
                             <div className="bg-white/5 border border-white/10 rounded-lg flex items-center px-3 py-1.5 gap-2">
                                 <Search size={14} className="text-white/40" />
-                                <input type="text" placeholder="Search evidence..." className="bg-transparent border-none outline-none text-[13px] text-white w-[200px]" />
+                                <input type="text" placeholder="Search evidence..." className="bg-transparent border-none outline-none text-[12px] text-white w-[200px]" />
                             </div>
-                            <button className="h-9 px-3 rounded-lg border border-white/10 hover:bg-white/5 flex items-center gap-2 text-[13px] text-white/70">
+                            <button className="h-9 px-3 rounded-lg border border-white/10 hover:bg-white/5 flex items-center gap-2 text-[12px] text-white/70">
                                 <Filter size={14} /> Filter
                             </button>
                         </div>
@@ -685,7 +685,7 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                                 setExportMode('quick'); // Default to Quick
                                 setShowExportModal(true);
                             }}
-                            className="h-9 px-4 rounded-lg bg-gradient-blue hover:opacity-90 text-white text-[13px] font-semibold flex items-center gap-2 shadow-glow-blue transition-all border border-blue-400/20"
+                            className="h-9 px-4 rounded-lg bg-gradient-blue hover:opacity-90 text-white text-[12px] font-semibold flex items-center gap-2 shadow-glow-blue transition-all border border-blue-400/20"
                         >
                             <Download size={14} /> Export Package
                         </button>
@@ -725,10 +725,10 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                                         </div>
                                         <div className="flex-1 min-w-0">
                                             <div className="flex justify-between items-start mb-0.5">
-                                                <span className={`text-[13px] font-medium truncate ${isSelected ? 'text-white' : 'text-white/80 group-hover:text-white'}`}>{item.label}</span>
-                                                <span className="text-[11px] font-mono text-white/40">{item.time}</span>
+                                                <span className={`text-[12px] font-medium truncate ${isSelected ? 'text-white' : 'text-white/80 group-hover:text-white'}`}>{item.label}</span>
+                                                <span className="text-[12px] font-mono text-white/40">{item.time}</span>
                                             </div>
-                                            <div className="flex items-center gap-2 text-[11px] text-white/50">
+                                            <div className="flex items-center gap-2 text-[12px] text-white/50">
                                                 <span>{item.source}</span>
                                                 <span className="text-white/20">•</span>
                                                 <span className="bg-white/5 px-1.5 rounded text-white/40">{item.tag}</span>
@@ -751,15 +751,15 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                                             <div className="absolute bottom-4 left-4 right-4 h-1 bg-white/20 rounded-full overflow-hidden">
                                                 <div className="w-1/3 h-full bg-blue-500 shadow-glow-blue" />
                                             </div>
-                                            <div className="absolute top-4 left-4 px-2 py-1 bg-black/60 backdrop-blur rounded text-[11px] text-white/80 font-mono">
+                                            <div className="absolute top-4 left-4 px-2 py-1 bg-black/60 backdrop-blur rounded text-[12px] text-white/80 font-mono">
                                                 {selectedItem.source} • {selectedItem.time}
                                             </div>
                                         </>
                                     ) : selectedItem.type === 'snapshot' ? (
                                         <div className="flex flex-col items-center gap-3">
                                             <Camera size={48} className="text-white/20" />
-                                            <div className="text-white/40 text-[13px]">Image Preview Placeholder</div>
-                                            <div className="absolute top-4 left-4 px-2 py-1 bg-black/60 backdrop-blur rounded text-[11px] text-white/80 font-mono">
+                                            <div className="text-white/40 text-[12px]">Image Preview Placeholder</div>
+                                            <div className="absolute top-4 left-4 px-2 py-1 bg-black/60 backdrop-blur rounded text-[12px] text-white/80 font-mono">
                                                 {selectedItem.source} • {selectedItem.time}
                                             </div>
                                         </div>
@@ -781,7 +781,7 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                             <div className="flex items-center gap-4">
                                 <button className="text-white/70 hover:text-white"><Share2 size={16} /></button>
                                 <div className="w-px h-4 bg-white/10" />
-                                <span className="text-[13px] text-white/50">{selectedItem?.label || 'Select item'}</span>
+                                <span className="text-[12px] text-white/50">{selectedItem?.label || 'Select item'}</span>
                             </div>
                             <button className="px-3 py-1.5 bg-white/5 hover:bg-white/10 rounded border border-white/10 text-[12px] text-white">Download</button>
                         </div>
@@ -810,17 +810,17 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                         {metadataView === 'details' ? (
                             <div className="p-4 space-y-6 animate-in fade-in duration-200">
                                 <div>
-                                    <div className="text-[11px] text-white/40 uppercase font-bold mb-2">Source Details</div>
+                                    <div className="text-[12px] text-white/40 uppercase font-bold mb-2">Source Details</div>
                                     <div className="space-y-2">
-                                        <div className="flex justify-between text-[13px]">
+                                        <div className="flex justify-between text-[12px]">
                                             <span className="text-white/60">Device ID</span>
                                             <span className="text-white font-mono">{selectedItem ? 'DRN-03-XJ' : '-'}</span>
                                         </div>
-                                        <div className="flex justify-between text-[13px]">
+                                        <div className="flex justify-between text-[12px]">
                                             <span className="text-white/60">Location</span>
                                             <span className="text-white font-mono">34.05, -118.25</span>
                                         </div>
-                                        <div className="flex justify-between text-[13px]">
+                                        <div className="flex justify-between text-[12px]">
                                             <span className="text-white/60">Format</span>
                                             <span className="text-white font-mono">{(selectedItem as any)?.format || 'MP4 (H.265)'}</span>
                                         </div>
@@ -830,28 +830,28 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                                 <div className="w-full h-px bg-white/5" />
 
                                 <div>
-                                    <div className="text-[11px] text-white/40 uppercase font-bold mb-2">Chain of Custody</div>
+                                    <div className="text-[12px] text-white/40 uppercase font-bold mb-2">Chain of Custody</div>
                                     <div className="space-y-3 relative pl-2">
                                         <div className="absolute left-[3px] top-1 bottom-1 w-px bg-white/10" />
                                         <div className="flex gap-3 relative">
                                             <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-1.5 shrink-0 shadow-lg" />
                                             <div>
                                                 <div className="text-[12px] text-white">Captured</div>
-                                                <div className="text-[10px] text-white/40">{selectedItem?.time || '14:32:01'} • System</div>
+                                                <div className="text-[12px] text-white/40">{selectedItem?.time || '14:32:01'} • System</div>
                                             </div>
                                         </div>
                                         <div className="flex gap-3 relative">
                                             <div className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5 shrink-0 shadow-lg" />
                                             <div>
                                                 <div className="text-[12px] text-white">Auto-Tagged</div>
-                                                <div className="text-[10px] text-white/40">{selectedItem?.time || '14:32:02'} • AI Core</div>
+                                                <div className="text-[12px] text-white/40">{selectedItem?.time || '14:32:02'} • AI Core</div>
                                             </div>
                                         </div>
                                         <div className="flex gap-3 relative">
                                             <div className="w-1.5 h-1.5 rounded-full bg-white/20 mt-1.5 shrink-0" />
                                             <div>
                                                 <div className="text-[12px] text-white">Viewed</div>
-                                                <div className="text-[10px] text-white/40">14:35:12 • Operator</div>
+                                                <div className="text-[12px] text-white/40">14:35:12 • Operator</div>
                                             </div>
                                         </div>
                                     </div>
@@ -859,7 +859,7 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
 
                                 <div className="bg-emerald-500/5 border border-emerald-500/10 rounded p-3 flex gap-2 shadow-inner">
                                     <CheckCircle2 size={14} className="text-emerald-400 mt-0.5" />
-                                    <div className="text-[11px] text-emerald-100">Digital signature verified. Original file intact.</div>
+                                    <div className="text-[12px] text-emerald-100">Digital signature verified. Original file intact.</div>
                                 </div>
                             </div>
                         ) : (
@@ -867,7 +867,7 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                                 <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-white/30 p-6 text-center">
                                     <MapPin size={32} className="mb-2 opacity-50" />
                                     <p className="text-[12px]">Flight path visualization</p>
-                                    <p className="text-[10px] text-white/20 mt-1">{selectedItem ? `Source: ${selectedItem.source}` : 'Select item to view path'}</p>
+                                    <p className="text-[12px] text-white/20 mt-1">{selectedItem ? `Source: ${selectedItem.source}` : 'Select item to view path'}</p>
                                     <div className="mt-4 w-full h-32 border-l border-b border-white/20 relative">
                                         <div className="absolute bottom-0 left-0 w-full h-full border-t border-r border-dashed border-white/10 rounded-tr-3xl" />
                                         <div className="absolute top-0 right-0 w-2 h-2 bg-blue-500 rounded-full shadow-glow-blue" />
@@ -913,15 +913,15 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                                                 </div>
                                             </div>
                                             <div className="space-y-2">
-                                                <div className="flex justify-between text-[13px] border-b border-white/5 pb-2">
+                                                <div className="flex justify-between text-[12px] border-b border-white/5 pb-2">
                                                     <span className="text-white/60">Time Range</span>
                                                     <span className="text-white">Incident Duration (Active)</span>
                                                 </div>
-                                                <div className="flex justify-between text-[13px] border-b border-white/5 pb-2">
+                                                <div className="flex justify-between text-[12px] border-b border-white/5 pb-2">
                                                     <span className="text-white/60">Items</span>
                                                     <span className="text-white">{mockEvidence.length} items + Logs</span>
                                                 </div>
-                                                <div className="flex justify-between text-[13px]">
+                                                <div className="flex justify-between text-[12px]">
                                                     <span className="text-white/60">Estimated Size</span>
                                                     <span className="text-white font-mono">~145 MB</span>
                                                 </div>
@@ -930,13 +930,13 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                                     ) : (
                                         <div className="space-y-4 animate-in slide-in-from-right-4 fade-in duration-300">
                                             <div>
-                                                <label className="text-[11px] font-bold text-white/40 uppercase tracking-wider mb-2 block">Scope</label>
+                                                <label className="text-[12px] font-bold text-white/40 uppercase tracking-wider mb-2 block">Scope</label>
                                                 <div className="bg-black/20 p-1 rounded-lg flex border border-white/5">
                                                     {(['All', 'Selected', 'Time'] as const).map(scope => (
                                                         <button
                                                             key={scope}
                                                             onClick={() => setExportScope(scope)}
-                                                            className={`flex-1 py-1.5 text-[11px] font-medium rounded-md transition-all ${exportScope === scope ? 'bg-surface text-white shadow-neu-flat border border-white/10' : 'text-white/40 hover:text-white/60 hover:bg-white/10 border border-transparent'}`}
+                                                            className={`flex-1 py-1.5 text-[12px] font-medium rounded-md transition-all ${exportScope === scope ? 'bg-surface text-white shadow-neu-flat border border-white/10' : 'text-white/40 hover:text-white/60 hover:bg-white/10 border border-transparent'}`}
                                                         >
                                                             {scope}
                                                         </button>
@@ -945,7 +945,7 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                                             </div>
 
                                             <div>
-                                                <label className="text-[11px] font-bold text-white/40 uppercase tracking-wider mb-2 block">Includes</label>
+                                                <label className="text-[12px] font-bold text-white/40 uppercase tracking-wider mb-2 block">Includes</label>
                                                 <div className="grid grid-cols-2 gap-2">
                                                     {['GPS', 'Flight Path', 'Notes', 'CoC', 'Hashes'].map(opt => {
                                                         const isChecked = exportIncludes.includes(opt);
@@ -958,7 +958,7 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                                                                 <div className={`w-4 h-4 rounded border flex items-center justify-center transition-colors ${isChecked ? 'bg-blue-500 border-blue-500' : 'bg-transparent border-white/30 group-hover:border-white/50'}`}>
                                                                     {isChecked && <Check size={10} className="text-white" />}
                                                                 </div>
-                                                                <span className={`text-[13px] ${isChecked ? 'text-white' : 'text-white/60 group-hover:text-white/80'}`}>{opt}</span>
+                                                                <span className={`text-[12px] ${isChecked ? 'text-white' : 'text-white/60 group-hover:text-white/80'}`}>{opt}</span>
                                                             </div>
                                                         );
                                                     })}
@@ -966,10 +966,10 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                                             </div>
 
                                             <div>
-                                                <label className="text-[11px] font-bold text-white/40 uppercase tracking-wider mb-2 block">Reason</label>
+                                                <label className="text-[12px] font-bold text-white/40 uppercase tracking-wider mb-2 block">Reason</label>
                                                 <div className="relative">
                                                     <select
-                                                        className="w-full h-9 bg-black/20 border border-white/10 rounded-lg text-[13px] text-white px-3 outline-none appearance-none cursor-pointer hover:border-white/20 transition-colors"
+                                                        className="w-full h-9 bg-black/20 border border-white/10 rounded-lg text-[12px] text-white px-3 outline-none appearance-none cursor-pointer hover:border-white/20 transition-colors"
                                                         value={exportReason}
                                                         onChange={(e) => setExportReason(e.target.value)}
                                                     >
@@ -985,8 +985,8 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                                     )}
 
                                     <div className="flex gap-3 pt-2">
-                                        <button onClick={() => setShowExportModal(false)} className="flex-1 h-10 rounded-lg border border-white/10 text-[13px] text-white/70 hover:bg-white/5 transition-colors">Cancel</button>
-                                        <button onClick={handleExport} className="flex-1 h-10 rounded-lg bg-blue-600 text-white text-[13px] font-bold hover:bg-blue-500 shadow-glow-blue transition-colors flex items-center justify-center gap-2">
+                                        <button onClick={() => setShowExportModal(false)} className="flex-1 h-10 rounded-lg border border-white/10 text-[12px] text-white/70 hover:bg-white/5 transition-colors">Cancel</button>
+                                        <button onClick={handleExport} className="flex-1 h-10 rounded-lg bg-blue-600 text-white text-[12px] font-bold hover:bg-blue-500 shadow-glow-blue transition-colors flex items-center justify-center gap-2">
                                             <Download size={14} />
                                             {exportMode === 'quick' ? 'Quick Export' : 'Custom Export'}
                                         </button>
@@ -1016,13 +1016,13 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                                 <div className="flex bg-black/20 rounded-lg p-1 border border-white/5 ml-2">
                                     <button
                                         onClick={() => setCanvasMode('feeds')}
-                                        className={`px-3 py-0.5 rounded text-[11px] font-bold uppercase tracking-wider transition-all ${canvasMode === 'feeds' ? 'bg-surface text-white shadow-neu-flat border border-white/10' : 'text-white/40 hover:text-white/60'}`}
+                                        className={`px-3 py-0.5 rounded text-[12px] font-bold uppercase tracking-wider transition-all ${canvasMode === 'feeds' ? 'bg-surface text-white shadow-neu-flat border border-white/10' : 'text-white/40 hover:text-white/60'}`}
                                     >
                                         Live Feeds
                                     </button>
                                     <button
                                         onClick={() => setCanvasMode('map')}
-                                        className={`px-3 py-0.5 rounded text-[11px] font-bold uppercase tracking-wider transition-all ${canvasMode === 'map' ? 'bg-blue-500/10 text-blue-400 shadow-neu-flat border border-blue-500/20' : 'text-white/40 hover:text-white/60'}`}
+                                        className={`px-3 py-0.5 rounded text-[12px] font-bold uppercase tracking-wider transition-all ${canvasMode === 'map' ? 'bg-blue-500/10 text-blue-400 shadow-neu-flat border border-blue-500/20' : 'text-white/40 hover:text-white/60'}`}
                                     >
                                         Tactical Map
                                     </button>
@@ -1039,7 +1039,7 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                                 ${layout === 'focus' ? 'bg-surface text-white shadow-neu-flat border border-white/10' : 'text-white/40 hover:text-white/60 hover:bg-white/5 border border-transparent'}`}
                                 >
                                     <Layout size={14} />
-                                    <span className="text-[11px] font-medium">Focus</span>
+                                    <span className="text-[12px] font-medium">Focus</span>
                                 </button>
                                 <button
                                     onClick={() => setLayout('2x2')}
@@ -1047,7 +1047,7 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                                 ${layout === '2x2' ? 'bg-surface text-white shadow-neu-flat border border-white/10' : 'text-white/40 hover:text-white/60 hover:bg-white/5 border border-transparent'}`}
                                 >
                                     <Grid size={14} />
-                                    <span className="text-[11px] font-medium">2×2</span>
+                                    <span className="text-[12px] font-medium">2×2</span>
                                 </button>
                                 <button
                                     onClick={() => setLayout('3x3')}
@@ -1055,7 +1055,7 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                                 ${layout === '3x3' ? 'bg-surface text-white shadow-neu-flat border border-white/10' : 'text-white/40 hover:text-white/60 hover:bg-white/5 border border-transparent'}`}
                                 >
                                     <Grid3x3 size={14} />
-                                    <span className="text-[11px] font-medium">3×3</span>
+                                    <span className="text-[12px] font-medium">3×3</span>
                                 </button>
                             </div>
                         )}
@@ -1085,8 +1085,8 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                     <div className="p-5 border-b border-white/5 relative z-50 bg-surface/50 backdrop-blur-md">
                         <div className="flex justify-between items-start mb-2">
                             <div>
-                                <h2 className="text-[18px] font-semibold text-white leading-tight">{alert.type}</h2>
-                                <div className="flex items-center gap-2 mt-1 flex-wrap text-[13px] text-white/50">
+                                <h2 className="text-[20px] font-semibold text-white leading-tight">{alert.type}</h2>
+                                <div className="flex items-center gap-2 mt-1 flex-wrap text-[12px] text-white/50">
                                     <span>{alert.site}</span>
                                     <span className="text-white/20">•</span>
                                     <span>Gate 2</span>
@@ -1101,7 +1101,7 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                             </button>
                         </div>
                         {/* Actionable Context Metrics Row */}
-                        <div className="flex items-center gap-3 text-[11px] font-medium mt-3">
+                        <div className="flex items-center gap-3 text-[12px] font-medium mt-3">
                             {/* Tasks Drill */}
                             <button
                                 onClick={() => setActiveMetricDrill(activeMetricDrill === 'tasks' ? null : 'tasks')}
@@ -1128,7 +1128,7 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                                 className="flex items-center gap-1.5 transition-colors hover:opacity-80"
                             >
                                 <Shield size={12} className={isPerimeterLocked ? "text-emerald-400" : "text-white/40"} />
-                                <span className="text-[10px]" style={{ color: isPerimeterLocked ? "#34d399" : "rgba(255,255,255,0.6)" }}>
+                                <span className="text-[12px]" style={{ color: isPerimeterLocked ? "#34d399" : "rgba(255,255,255,0.6)" }}>
                                     Site: {isPerimeterLocked ? "Locked" : "Open"}
                                 </span>
                             </button>
@@ -1161,7 +1161,7 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
 
                         <div className="flex items-center gap-3 mt-4">
                             {/* Single Truth Status Pill */}
-                            <span className="bg-blue-500/10 text-blue-400 border border-blue-500/20 text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider flex items-center gap-1.5 shadow-sm">
+                            <span className="bg-blue-500/10 text-blue-400 border border-blue-500/20 text-[12px] font-bold px-2 py-0.5 rounded uppercase tracking-wider flex items-center gap-1.5 shadow-sm">
                                 <div className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse shadow-glow-blue" />
                                 ACTIVE — IN PROGRESS
                             </span>
@@ -1171,7 +1171,7 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                             <div className="group relative cursor-help">
                                 <span className="text-[12px] text-white/60">Confidence: <span className="text-white font-bold">High</span></span>
                                 <div className="absolute top-full right-0 mt-2 p-3 w-[240px] bg-[#1a1a1a] border border-white/10 rounded-lg shadow-2xl opacity-0 group-hover:opacity-100 pointer-events-none z-[100] transition-opacity">
-                                    <div className="text-[11px] font-bold text-white/40 uppercase tracking-wider mb-2">Why High Confidence</div>
+                                    <div className="text-[12px] font-bold text-white/40 uppercase tracking-wider mb-2">Why High Confidence</div>
                                     <ul className="space-y-2">
                                         <li className="flex items-start gap-2 text-[12px] text-white/80">
                                             <CheckCircle2 size={12} className="text-blue-400 mt-0.5 shrink-0" />
@@ -1209,7 +1209,7 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                             <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-300">
                                 {/* Content from before (shortened for brevity in XML output, assumes full restore) */}
                                 <div className="space-y-3">
-                                    <h3 className="text-[11px] font-bold uppercase tracking-wider text-white/40">Recommended Actions</h3>
+                                    <h3 className="text-[12px] font-bold uppercase tracking-wider text-white/40">Recommended Actions</h3>
                                     {!showDronePresets ? (
                                         <div className="space-y-2">
                                             <button
@@ -1218,7 +1218,7 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                                             >
                                                 <span className="flex items-center gap-2"><Crosshair size={16} /> Deploy additional drones</span>
                                                 <div className="flex items-center gap-2">
-                                                    <span className="text-[9px] bg-white/20 text-white px-1.5 py-0.5 rounded uppercase tracking-wide">Protocol</span>
+                                                    <span className="text-[8px] bg-white/20 text-white px-1.5 py-0.5 rounded uppercase tracking-wide">Protocol</span>
                                                     <ArrowRight size={16} className="opacity-60" />
                                                 </div>
                                             </button>
@@ -1247,13 +1247,13 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                                                 </span>
                                                 <div className="flex items-center gap-2">
                                                     {isPerimeterLocked ? (
-                                                        <span className="text-[10px] font-bold uppercase tracking-wider bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded shadow-sm">Locked</span>
+                                                        <span className="text-[12px] font-bold uppercase tracking-wider bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded shadow-sm">Locked</span>
                                                     ) : (
                                                         <div className="flex items-center gap-1 group/tooltip relative">
-                                                            <span className="text-[9px] bg-purple-500/20 text-purple-300 border border-purple-500/20 px-1.5 py-0.5 rounded uppercase tracking-wide">Suggested</span>
+                                                            <span className="text-[8px] bg-purple-500/20 text-purple-300 border border-purple-500/20 px-1.5 py-0.5 rounded uppercase tracking-wide">Suggested</span>
                                                             <HelpCircle size={12} className="text-white/30 cursor-help" />
                                                             <div className="absolute bottom-full right-0 mb-2 p-3 w-[200px] bg-[#1a1a1a] border border-white/10 rounded-lg shadow-2xl opacity-0 group-hover/tooltip:opacity-100 pointer-events-none transition-opacity z-50">
-                                                                <div className="text-[11px] font-bold text-white/40 uppercase tracking-wider mb-1">Reasoning</div>
+                                                                <div className="text-[12px] font-bold text-white/40 uppercase tracking-wider mb-1">Reasoning</div>
                                                                 <p className="text-[12px] text-white/80 leading-snug">
                                                                     Intruder heading towards main exit. Lockout recommended to contain threat.
                                                                 </p>
@@ -1272,16 +1272,16 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                                                     className="w-full p-3 rounded-lg border border-white/5 bg-gradient-card hover:bg-white/5 text-left group transition-all shadow-neu-flat hover:shadow-neu-hover"
                                                 >
                                                     <div className="flex justify-between items-center mb-1">
-                                                        <span className="text-[13px] font-medium text-white group-hover:text-blue-400 transition-colors">{preset}</span>
+                                                        <span className="text-[12px] font-medium text-white group-hover:text-blue-400 transition-colors">{preset}</span>
                                                         <ArrowRight size={14} className="text-white/20 group-hover:text-blue-400" />
                                                     </div>
-                                                    <div className="flex justify-between items-center text-[11px] text-white/40">
+                                                    <div className="flex justify-between items-center text-[12px] text-white/40">
                                                         <span>Auto-assign Drone 2</span>
                                                         <span className="font-mono">ETA 12s</span>
                                                     </div>
                                                 </button>
                                             ))}
-                                            <button onClick={() => setShowDronePresets(false)} className="w-full py-2 text-[11px] text-white/40 hover:text-white">Cancel</button>
+                                            <button onClick={() => setShowDronePresets(false)} className="w-full py-2 text-[12px] text-white/40 hover:text-white">Cancel</button>
                                         </div>
                                     )}
                                 </div>
@@ -1290,14 +1290,14 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                                 <div className="space-y-4">
                                     {deployedAssets.length > 0 && (
                                         <div className="space-y-3">
-                                            <h3 className="text-[11px] font-bold uppercase tracking-wider text-white/40">Primary Asset</h3>
+                                            <h3 className="text-[12px] font-bold uppercase tracking-wider text-white/40">Primary Asset</h3>
                                             {renderAssetCard(deployedAssets[0], true)}
                                         </div>
                                     )}
 
                                     {deployedAssets.length > 1 && (
                                         <div className="space-y-3">
-                                            <h3 className="text-[11px] font-bold uppercase tracking-wider text-white/40">Additional Assets</h3>
+                                            <h3 className="text-[12px] font-bold uppercase tracking-wider text-white/40">Additional Assets</h3>
                                             <div className="space-y-3">
                                                 {deployedAssets.slice(1).map(asset => renderAssetCard(asset))}
                                             </div>
@@ -1306,7 +1306,7 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                                 </div>
                                 {/* Task Ledger */}
                                 <div className="space-y-2">
-                                    <h3 className="text-[11px] font-bold uppercase tracking-wider text-white/40 flex justify-between">
+                                    <h3 className="text-[12px] font-bold uppercase tracking-wider text-white/40 flex justify-between">
                                         Task Ledger
                                         <span className="text-white/20">{tasks.length} active</span>
                                     </h3>
@@ -1314,13 +1314,13 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                                         {tasks.map((task) => (
                                             <div key={task.id} className="flex items-center justify-between p-3 rounded-lg border border-white/5 bg-white/[0.02] hover:bg-white/5 transition-colors">
                                                 <div>
-                                                    <div className="text-[13px] font-medium text-white">{task.name}</div>
-                                                    <div className="text-[11px] text-white/50 mt-0.5 flex items-center gap-1">
+                                                    <div className="text-[12px] font-medium text-white">{task.name}</div>
+                                                    <div className="text-[12px] text-white/50 mt-0.5 flex items-center gap-1">
                                                         <span>{task.assignee}</span>
                                                         {task.eta && <><span className="text-white/20">•</span> <span className="font-mono">{task.eta}</span></>}
                                                     </div>
                                                 </div>
-                                                <div className={`text-[10px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider ${task.status === 'Active' ? 'bg-blue-500/10 text-blue-400' : 'bg-white/5 text-white/40'}`}>
+                                                <div className={`text-[12px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider ${task.status === 'Active' ? 'bg-blue-500/10 text-blue-400' : 'bg-white/5 text-white/40'}`}>
                                                     {task.status}
                                                 </div>
                                             </div>
@@ -1336,29 +1336,29 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                                 <div className="space-y-4">
                                     {/* Recipient Input */}
                                     <div>
-                                        <label className="text-[11px] font-bold text-white/40 uppercase tracking-wider mb-2 block">To</label>
+                                        <label className="text-[12px] font-bold text-white/40 uppercase tracking-wider mb-2 block">To</label>
                                         <div className="relative">
                                             <input
                                                 type="text"
                                                 value={briefRecipient}
                                                 onChange={(e) => setBriefRecipient(e.target.value)}
-                                                className="w-full h-10 bg-black/20 border border-white/10 rounded-lg px-3 text-[13px] text-white focus:border-white/20 focus:bg-black/30 outline-none transition-colors"
+                                                className="w-full h-10 bg-black/20 border border-white/10 rounded-lg px-3 text-[12px] text-white focus:border-white/20 focus:bg-black/30 outline-none transition-colors"
                                             />
                                             <div className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-1">
-                                                <span className="px-1.5 py-0.5 rounded bg-blue-500/20 text-blue-300 text-[10px] font-medium border border-blue-500/20">Team Alpha</span>
+                                                <span className="px-1.5 py-0.5 rounded bg-blue-500/20 text-blue-300 text-[12px] font-medium border border-blue-500/20">Team Alpha</span>
                                             </div>
                                         </div>
                                     </div>
 
                                     {/* Template Selector */}
                                     <div>
-                                        <label className="text-[11px] font-bold text-white/40 uppercase tracking-wider mb-2 block">Template</label>
+                                        <label className="text-[12px] font-bold text-white/40 uppercase tracking-wider mb-2 block">Template</label>
                                         <div className="flex gap-2">
                                             {(['radio', 'standard', 'detailed'] as const).map(tpl => (
                                                 <button
                                                     key={tpl}
                                                     onClick={() => handleTemplateChange(tpl)}
-                                                    className={`flex-1 py-2 text-[11px] font-medium border rounded-lg capitalize transition-all ${briefTemplate === tpl ? 'bg-white/10 border-white/20 text-white shadow-sm' : 'border-transparent bg-white/5 text-white/50 hover:bg-white/10'}`}
+                                                    className={`flex-1 py-2 text-[12px] font-medium border rounded-lg capitalize transition-all ${briefTemplate === tpl ? 'bg-white/10 border-white/20 text-white shadow-sm' : 'border-transparent bg-white/5 text-white/50 hover:bg-white/10'}`}
                                                 >
                                                     {tpl}
                                                 </button>
@@ -1368,18 +1368,18 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
 
                                     {/* Message Body */}
                                     <div>
-                                        <label className="text-[11px] font-bold text-white/40 uppercase tracking-wider mb-2 block">Message</label>
+                                        <label className="text-[12px] font-bold text-white/40 uppercase tracking-wider mb-2 block">Message</label>
                                         <textarea
                                             value={briefText}
                                             onChange={(e) => setBriefText(e.target.value)}
                                             rows={6}
-                                            className="w-full bg-black/20 border border-white/10 rounded-lg p-3 text-[13px] text-white/90 focus:border-white/20 focus:bg-black/30 outline-none resize-none leading-relaxed"
+                                            className="w-full bg-black/20 border border-white/10 rounded-lg p-3 text-[12px] text-white/90 focus:border-white/20 focus:bg-black/30 outline-none resize-none leading-relaxed"
                                         />
                                     </div>
 
                                     {/* Attachments */}
                                     <div>
-                                        <label className="text-[11px] font-bold text-white/40 uppercase tracking-wider mb-2 block">Attachments</label>
+                                        <label className="text-[12px] font-bold text-white/40 uppercase tracking-wider mb-2 block">Attachments</label>
                                         <div className="flex gap-2">
                                             {['Snapshot', 'Map Location', 'Telemetry Log'].map(item => {
                                                 const isActive = briefAttachments.includes(item);
@@ -1387,7 +1387,7 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                                                     <button
                                                         key={item}
                                                         onClick={() => toggleAttachment(item)}
-                                                        className={`px-3 py-1.5 rounded-full border text-[11px] flex items-center gap-2 transition-all ${isActive ? 'bg-blue-500/10 border-blue-500/30 text-blue-300' : 'bg-white/5 border-transparent text-white/40 hover:bg-white/10'}`}
+                                                        className={`px-3 py-1.5 rounded-full border text-[12px] flex items-center gap-2 transition-all ${isActive ? 'bg-blue-500/10 border-blue-500/30 text-blue-300' : 'bg-white/5 border-transparent text-white/40 hover:bg-white/10'}`}
                                                     >
                                                         {isActive ? <Check size={12} /> : <Plus size={12} />}
                                                         {item}
@@ -1402,7 +1402,7 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                                     {!briefSent ? (
                                         <button
                                             onClick={handleSendBrief}
-                                            className="w-full h-10 bg-gradient-blue hover:opacity-90 text-white rounded-lg font-bold text-[13px] transition-all flex items-center justify-center gap-2 shadow-glow-blue border border-blue-400/20"
+                                            className="w-full h-10 bg-gradient-blue hover:opacity-90 text-white rounded-lg font-bold text-[12px] transition-all flex items-center justify-center gap-2 shadow-glow-blue border border-blue-400/20"
                                         >
                                             Send Briefing
                                         </button>
@@ -1412,7 +1412,7 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                                                 <CheckCircle2 size={14} />
                                                 {briefStatus === 'sent' ? 'Sending...' : briefStatus === 'delivered' ? 'Delivered' : 'Acknowledged'}
                                             </span>
-                                            <span className="text-[10px] text-emerald-400/60 font-mono">{briefSentTime}</span>
+                                            <span className="text-[12px] text-emerald-400/60 font-mono">{briefSentTime}</span>
                                         </div>
                                     )}
                                 </div>
@@ -1432,7 +1432,7 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                                         <div className="w-8 h-8 rounded-full bg-red-500/20 text-red-400 flex items-center justify-center group-hover:bg-red-500 group-hover:text-white transition-colors">
                                             <Video size={16} />
                                         </div>
-                                        <span className="text-[11px] font-medium text-white/70">Mark Moment (-10s)</span>
+                                        <span className="text-[12px] font-medium text-white/70">Mark Moment (-10s)</span>
                                     </button>
                                     <button
                                         onClick={() => setIsNoteComposerOpen(!isNoteComposerOpen)}
@@ -1441,7 +1441,7 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                                         <div className="w-8 h-8 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center group-hover:bg-blue-500 group-hover:text-white transition-colors">
                                             <FileText size={16} />
                                         </div>
-                                        <span className="text-[11px] font-medium text-white/70">Add Note</span>
+                                        <span className="text-[12px] font-medium text-white/70">Add Note</span>
                                     </button>
                                 </div>
 
@@ -1452,11 +1452,11 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                                             value={tempNote}
                                             onChange={(e) => setTempNote(e.target.value)}
                                             placeholder="Enter observation notes..."
-                                            className="w-full bg-transparent border-none text-[13px] text-white placeholder:text-white/30 focus:outline-none min-h-[60px] resize-none"
+                                            className="w-full bg-transparent border-none text-[12px] text-white placeholder:text-white/30 focus:outline-none min-h-[60px] resize-none"
                                         />
                                         <div className="flex justify-end gap-2 mt-2">
-                                            <button onClick={() => setIsNoteComposerOpen(false)} className="px-3 py-1.5 text-[11px] text-white/50 hover:text-white">Cancel</button>
-                                            <button onClick={handleAddNote} className="px-3 py-1.5 bg-blue-500 hover:bg-blue-400 text-white text-[11px] font-bold rounded shadow-glow-blue">Save Note</button>
+                                            <button onClick={() => setIsNoteComposerOpen(false)} className="px-3 py-1.5 text-[12px] text-white/50 hover:text-white">Cancel</button>
+                                            <button onClick={handleAddNote} className="px-3 py-1.5 bg-blue-500 hover:bg-blue-400 text-white text-[12px] font-bold rounded shadow-glow-blue">Save Note</button>
                                         </div>
                                     </div>
                                 )}
@@ -1466,10 +1466,10 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                                 {/* Evidence List */}
                                 <div className="space-y-3">
                                     <div className="flex items-center justify-between">
-                                        <h3 className="text-[11px] font-bold uppercase tracking-wider text-white/40">Captured Items ({mockEvidence.length})</h3>
+                                        <h3 className="text-[12px] font-bold uppercase tracking-wider text-white/40">Captured Items ({mockEvidence.length})</h3>
                                         <button
                                             onClick={() => setIsCaseFileOpen(true)} // Deep Link Trigger
-                                            className="text-[11px] text-blue-400 hover:text-blue-300 flex items-center gap-1"
+                                            className="text-[12px] text-blue-400 hover:text-blue-300 flex items-center gap-1"
                                         >
                                             View Full Case <ArrowRight size={12} />
                                         </button>
@@ -1483,10 +1483,10 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                                                 </div>
                                                 <div className="flex-1 min-w-0">
                                                     <div className="flex justify-between items-start">
-                                                        <span className="text-[13px] font-medium text-white truncate pr-2">{ev.label}</span>
-                                                        <span className="text-[11px] font-mono text-white/30 whitespace-nowrap">{ev.time}</span>
+                                                        <span className="text-[12px] font-medium text-white truncate pr-2">{ev.label}</span>
+                                                        <span className="text-[12px] font-mono text-white/30 whitespace-nowrap">{ev.time}</span>
                                                     </div>
-                                                    <div className="text-[11px] text-white/40 flex items-center gap-2 mt-0.5">
+                                                    <div className="text-[12px] text-white/40 flex items-center gap-2 mt-0.5">
                                                         <span>{ev.source}</span>
                                                         {ev.duration && <><span>•</span> <span>{ev.duration}</span></>}
                                                         {ev.format && <><span>•</span> <span>{ev.format}</span></>}
@@ -1500,7 +1500,7 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                                 <div className="pt-2">
                                     <button
                                         onClick={() => { setExportMode('quick'); setShowExportModal(true); }}
-                                        className="w-full h-10 border border-white/10 rounded-lg text-[13px] font-medium text-white/70 hover:bg-white/5 hover:text-white transition-colors flex items-center justify-center gap-2"
+                                        className="w-full h-10 border border-white/10 rounded-lg text-[12px] font-medium text-white/70 hover:bg-white/5 hover:text-white transition-colors flex items-center justify-center gap-2"
                                     >
                                         <Download size={14} /> Export All Evidence
                                     </button>
@@ -1520,8 +1520,8 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
             <div className="h-auto py-5 px-6 border-b border-white/5 bg-surface/50 backdrop-blur-md shrink-0 relative flex flex-col gap-3 z-50">
                 <div className="flex items-start justify-between">
                     <div className="flex flex-col gap-2">
-                        <h2 className="text-[18px] font-semibold text-white leading-tight tracking-tight">{alert.type}</h2>
-                        <div className="flex items-center gap-2 text-[13px] text-white/60 font-medium flex-wrap">
+                        <h2 className="text-[20px] font-semibold text-white leading-tight tracking-tight">{alert.type}</h2>
+                        <div className="flex items-center gap-2 text-[12px] text-white/60 font-medium flex-wrap">
                             <span>{alert.site}</span>
                             <span className="text-white/20">•</span>
                             <span>Zone B</span>
@@ -1529,7 +1529,7 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                             <div className="group relative cursor-help">
                                 <span className="text-white/80 border-b border-dashed border-white/20">Conf: {confidenceLabel}</span>
                                 <div className="absolute top-full left-0 mt-2 p-3 w-[240px] bg-[#1a1a1a] border border-white/10 rounded-lg shadow-2xl opacity-0 group-hover:opacity-100 pointer-events-none z-[100] transition-opacity">
-                                    <div className="text-[11px] font-bold text-white/40 uppercase tracking-wider mb-2">Why High Confidence</div>
+                                    <div className="text-[12px] font-bold text-white/40 uppercase tracking-wider mb-2">Why High Confidence</div>
                                     <ul className="space-y-2">
                                         <li className="flex items-start gap-2 text-[12px] text-white/80">
                                             <CheckCircle2 size={12} className="text-blue-400 mt-0.5 shrink-0" />
@@ -1565,7 +1565,7 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                                     ? 'bg-amber-500/10 text-amber-400 border-amber-500/20 shadow-[0_0_10px_rgba(245,158,11,0.2)]'
                                     : 'bg-blue-500/10 text-blue-400 border-blue-500/20 shadow-glow-blue';
                                 return (
-                                    <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border ${statusStyles}`}>
+                                    <span className={`text-[12px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border ${statusStyles}`}>
                                         {alert.status}
                                     </span>
                                 );
@@ -1588,11 +1588,11 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                     <div className="space-y-3">
                         <div className="aspect-video w-full bg-black rounded-lg border border-white/10 relative overflow-hidden group shadow-neu-flat hover:shadow-neu-hover transition-all">
                             <div className="absolute top-4 left-4 flex items-center gap-2 z-10">
-                                <span className="text-[10px] bg-red-600 text-white px-2 py-0.5 rounded-sm uppercase font-bold tracking-wider animate-pulse shadow-glow-red">Live</span>
-                                <span className="text-[10px] font-mono text-white/80 bg-black/50 px-2 py-0.5 rounded-sm backdrop-blur-sm shadow-sm">CAM-02</span>
+                                <span className="text-[12px] bg-red-600 text-white px-2 py-0.5 rounded-sm uppercase font-bold tracking-wider animate-pulse shadow-glow-red">Live</span>
+                                <span className="text-[12px] font-mono text-white/80 bg-black/50 px-2 py-0.5 rounded-sm backdrop-blur-sm shadow-sm">CAM-02</span>
                             </div>
                             <div className="absolute top-[20%] left-[35%] w-[30%] h-[60%] border-2 border-red-500 rounded-sm shadow-glow-red z-20">
-                                <div className="absolute -top-5 left-[-2px] bg-red-500 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-t-sm uppercase tracking-wider shadow-sm">
+                                <div className="absolute -top-5 left-[-2px] bg-red-500 text-white text-[8px] font-bold px-1.5 py-0.5 rounded-t-sm uppercase tracking-wider shadow-sm">
                                     Person
                                 </div>
                             </div>
@@ -1610,28 +1610,28 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                                 </button>
                             </div>
 
-                            <div className="absolute bottom-3 left-4 text-[11px] font-mono text-white/80 bg-black/40 px-2 py-1 rounded backdrop-blur-md border border-white/5 z-20 shadow-sm">
+                            <div className="absolute bottom-3 left-4 text-[12px] font-mono text-white/80 bg-black/40 px-2 py-1 rounded backdrop-blur-md border border-white/5 z-20 shadow-sm">
                                 {dateStr} {timeStr} IST
                             </div>
                         </div>
                         {alert.aiSummary && (
                             <div className="bg-gradient-to-r from-blue-500/10 to-transparent border border-blue-500/10 rounded-lg p-3 relative overflow-hidden shadow-inner">
                                 <div className="absolute left-0 top-0 bottom-0 w-1 bg-blue-500/50" />
-                                <span className="text-blue-400 font-bold text-[10px] uppercase tracking-wide block mb-1">AI Summary</span>
-                                <p className="text-[13px] text-white/90 leading-snug">{alert.aiSummary}</p>
+                                <span className="text-blue-400 font-bold text-[12px] uppercase tracking-wide block mb-1">AI Summary</span>
+                                <p className="text-[12px] text-white/90 leading-snug">{alert.aiSummary}</p>
                             </div>
                         )}
                     </div>
 
                     {/* Why this alert fired */}
                     <div>
-                        <h3 className="text-[11px] font-bold uppercase tracking-wider text-white/40 mb-3">Why this alert fired</h3>
+                        <h3 className="text-[12px] font-bold uppercase tracking-wider text-white/40 mb-3">Why this alert fired</h3>
                         <div className="bg-gradient-card rounded-lg p-3 border border-white/5 shadow-neu-flat">
-                            <div className="text-[13px] font-medium text-white mb-2">Motion at Gate 2 + unauthorized vehicle signature</div>
+                            <div className="text-[12px] font-medium text-white mb-2">Motion at Gate 2 + unauthorized vehicle signature</div>
                             <div className="flex flex-wrap gap-2">
-                                <span className="text-[11px] bg-white/5 border border-white/10 px-2 py-1 rounded text-white/60 shadow-sm">Sensor: Motion Sensor B</span>
-                                <span className="text-[11px] bg-white/5 border border-white/10 px-2 py-1 rounded text-white/60 shadow-sm">Zone: Gate 2</span>
-                                <span className="text-[11px] bg-white/5 border border-white/10 px-2 py-1 rounded text-white/60 shadow-sm">Policy: After-hours perimeter</span>
+                                <span className="text-[12px] bg-white/5 border border-white/10 px-2 py-1 rounded text-white/60 shadow-sm">Sensor: Motion Sensor B</span>
+                                <span className="text-[12px] bg-white/5 border border-white/10 px-2 py-1 rounded text-white/60 shadow-sm">Zone: Gate 2</span>
+                                <span className="text-[12px] bg-white/5 border border-white/10 px-2 py-1 rounded text-white/60 shadow-sm">Policy: After-hours perimeter</span>
                             </div>
                         </div>
                     </div>
@@ -1640,13 +1640,20 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
 
                     {/* Context Timeline */}
                     <div className="space-y-3">
-                        <h3 className="text-[11px] font-bold uppercase tracking-wider text-white/40">Context Timeline</h3>
+                        <h3 className="text-[12px] font-bold uppercase tracking-wider text-white/40">Context Timeline</h3>
                         <div className="space-y-0 relative">
-                            <div className="absolute left-3 top-2 bottom-4 w-px bg-white/5" />
                             {timelineEvents.map((evt, i) => {
                                 const isActive = evt.status === 'active';
                                 return (
                                     <div key={i} className={`flex items-start gap-3 py-2 relative group ${isActive ? 'opacity-100' : 'opacity-60'}`}>
+                                        {/* Timeline Line Segments */}
+                                        {i !== 0 && (
+                                            <div className={`absolute left-3 top-0 w-px bg-white/5 ${isActive ? 'h-[19px]' : 'h-[17px]'}`} />
+                                        )}
+                                        {i !== timelineEvents.length - 1 && (
+                                            <div className={`absolute left-3 bottom-0 w-px bg-white/5 ${isActive ? 'top-[19px]' : 'top-[17px]'}`} />
+                                        )}
+
                                         <div className="w-6 relative z-10 mt-1.5 flex items-center justify-center shrink-0">
                                             {isActive ? (
                                                 <div className="w-2.5 h-2.5 rounded-full bg-blue-500 shadow-glow-blue animate-pulse-fast" />
@@ -1657,12 +1664,12 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                                         <div className="flex-1">
                                             <div className="flex justify-between items-baseline">
                                                 <div className="flex items-center gap-2">
-                                                    <span className={`text-[13px] font-medium ${isActive ? 'text-blue-400' : 'text-white'}`}>{evt.label}</span>
+                                                    <span className={`text-[12px] font-medium ${isActive ? 'text-blue-400' : 'text-white'}`}>{evt.label}</span>
                                                     {isActive && <Loader2 size={10} className="animate-spin text-blue-400" />}
                                                 </div>
-                                                <span className="text-[11px] font-mono text-white/30">{evt.time}</span>
+                                                <span className="text-[12px] font-mono text-white/30">{evt.time}</span>
                                             </div>
-                                            <div className="text-[11px] text-white/50">{evt.src}</div>
+                                            <div className="text-[12px] text-white/50">{evt.src}</div>
                                         </div>
                                     </div>
                                 );
@@ -1670,10 +1677,10 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                         </div>
                         {/* Action Buttons Row */}
                         <div className="grid grid-cols-2 gap-3 pt-2">
-                            <button onClick={onOpenAuditTrail} className="h-10 rounded-lg bg-gradient-card border border-white/10 hover:bg-white/5 text-[13px] font-medium text-white transition-colors shadow-neu-flat">
+                            <button onClick={onOpenAuditTrail} className="h-10 rounded-lg bg-gradient-card border border-white/10 hover:bg-white/5 text-[12px] font-medium text-white transition-colors shadow-neu-flat">
                                 View Audit Trail
                             </button>
-                            <button onClick={() => { setViewMode('response'); setActiveTab('evidence'); }} className="h-10 rounded-lg bg-gradient-card border border-white/10 hover:bg-white/5 text-[13px] font-medium text-white transition-colors shadow-neu-flat">
+                            <button onClick={() => { setViewMode('response'); setActiveTab('evidence'); }} className="h-10 rounded-lg bg-gradient-card border border-white/10 hover:bg-white/5 text-[12px] font-medium text-white transition-colors shadow-neu-flat">
                                 View Evidence
                             </button>
                         </div>
@@ -1683,34 +1690,34 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
 
                     {/* Assigned Asset (Phase 1) */}
                     <div className="space-y-3">
-                        <h3 className="text-[11px] font-bold uppercase tracking-wider text-white/40">Assigned Asset</h3>
+                        <h3 className="text-[12px] font-bold uppercase tracking-wider text-white/40">Assigned Asset</h3>
                         <div className="bg-gradient-card border border-white/5 rounded-xl p-4 shadow-neu-flat">
                             <div className="flex items-center gap-3 mb-4">
-                                <span className="text-[15px] font-semibold text-white">Drone 3</span>
-                                <span className="text-[11px] font-bold bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded border border-blue-500/20 shadow-glow-blue">Airborne</span>
+                                <span className="text-[16px] font-semibold text-white">Drone 3</span>
+                                <span className="text-[12px] font-bold bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded border border-blue-500/20 shadow-glow-blue">Airborne</span>
                             </div>
 
                             <div className="grid grid-cols-3 gap-2">
                                 <div className="bg-black/20 rounded-lg p-2 border border-white/5 shadow-inner">
                                     <div className="flex items-center gap-1.5 mb-1">
                                         <Battery size={10} className="text-white/40" />
-                                        <span className="text-[10px] text-white/40 font-bold uppercase">BAT</span>
+                                        <span className="text-[12px] text-white/40 font-bold uppercase">BAT</span>
                                     </div>
-                                    <div className="text-[14px] font-semibold text-white">72%</div>
+                                    <div className="text-[16px] font-semibold text-white">72%</div>
                                 </div>
                                 <div className="bg-black/20 rounded-lg p-2 border border-white/5 shadow-inner">
                                     <div className="flex items-center gap-1.5 mb-1">
                                         <Signal size={10} className="text-white/40" />
-                                        <span className="text-[10px] text-white/40 font-bold uppercase">LINK</span>
+                                        <span className="text-[12px] text-white/40 font-bold uppercase">LINK</span>
                                     </div>
-                                    <div className="text-[14px] font-semibold text-emerald-400">Good</div>
+                                    <div className="text-[16px] font-semibold text-emerald-400">Good</div>
                                 </div>
                                 <div className="bg-black/20 rounded-lg p-2 border border-white/5 shadow-inner">
                                     <div className="flex items-center gap-1.5 mb-1">
                                         <Crosshair size={10} className="text-white/40" />
-                                        <span className="text-[10px] text-white/40 font-bold uppercase">MODE</span>
+                                        <span className="text-[12px] text-white/40 font-bold uppercase">MODE</span>
                                     </div>
-                                    <div className="text-[14px] font-semibold text-white">Locked</div>
+                                    <div className="text-[16px] font-semibold text-white">Locked</div>
                                 </div>
                             </div>
                         </div>
@@ -1718,7 +1725,7 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
 
                     {/* Auto Sync Footer */}
                     <div className="pt-2 pb-1">
-                        <div className="flex items-center justify-center gap-2 text-[11px] text-white/30 font-medium select-none">
+                        <div className="flex items-center justify-center gap-2 text-[12px] text-white/30 font-medium select-none">
                             <RefreshCw size={10} />
                             Information is synced automatically
                         </div>
@@ -1731,13 +1738,13 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                 <div className="flex gap-3">
                     <button
                         onClick={() => setShowDismissConfirm(true)}
-                        className="flex-1 h-10 rounded-lg bg-gradient-card border border-white/10 text-[13px] font-medium text-white hover:bg-white/5 transition-colors flex items-center justify-center shadow-neu-flat"
+                        className="flex-1 h-10 rounded-lg bg-gradient-card border border-white/10 text-[12px] font-medium text-white hover:bg-white/5 transition-colors flex items-center justify-center shadow-neu-flat"
                     >
                         Mark false alarm
                     </button>
                     <button
                         onClick={() => setShowDeploySheet(true)}
-                        className="flex-1 h-10 rounded-lg bg-gradient-blue text-white text-[13px] font-bold hover:opacity-90 transition-colors shadow-glow-blue border border-blue-400/20 flex items-center justify-center"
+                        className="flex-1 h-10 rounded-lg bg-gradient-blue text-white text-[12px] font-bold hover:opacity-90 transition-colors shadow-glow-blue border border-blue-400/20 flex items-center justify-center"
                     >
                         Confirm threat
                     </button>
@@ -1749,17 +1756,17 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                 <div className="absolute inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-6 animate-in fade-in duration-200">
                     <div className="bg-surface border border-white/10 rounded-xl p-6 w-full max-w-[320px] shadow-2xl bg-gradient-surface">
                         <h3 className="text-[16px] font-semibold text-white mb-2">Mark false alarm?</h3>
-                        <p className="text-[13px] text-white/60 mb-6">This will mark the incident as reviewed. You can access it later in the logs.</p>
+                        <p className="text-[12px] text-white/60 mb-6">This will mark the incident as reviewed. You can access it later in the logs.</p>
                         <div className="flex gap-3">
                             <button
                                 onClick={() => setShowDismissConfirm(false)}
-                                className="flex-1 h-9 rounded-lg border border-white/10 text-[13px] text-white/70 hover:bg-white/5 flex items-center justify-center shadow-sm"
+                                className="flex-1 h-9 rounded-lg border border-white/10 text-[12px] text-white/70 hover:bg-white/5 flex items-center justify-center shadow-sm"
                             >
                                 Cancel
                             </button>
                             <button
                                 onClick={() => { setShowDismissConfirm(false); onClose(); }}
-                                className="flex-1 h-9 rounded-lg bg-white text-app text-[13px] font-bold hover:bg-white/90 flex items-center justify-center shadow-lg"
+                                className="flex-1 h-9 rounded-lg bg-white text-app text-[12px] font-bold hover:bg-white/90 flex items-center justify-center shadow-lg"
                             >
                                 Mark false alarm
                             </button>
@@ -1772,11 +1779,11 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                 <div className="absolute inset-x-0 bottom-0 bg-surface border-t border-white/10 z-50 rounded-t-xl shadow-2xl animate-in slide-in-from-bottom duration-300 bg-gradient-surface">
                     <div className="p-5">
                         <div className="flex justify-between items-center mb-4">
-                            <h3 className="text-[15px] font-semibold text-white">Confirm Threat</h3>
+                            <h3 className="text-[16px] font-semibold text-white">Confirm Threat</h3>
                             <button onClick={() => setShowDeploySheet(false)}><X size={16} className="text-white/40" /></button>
                         </div>
                         <div className="space-y-4 mb-6">
-                            <p className="text-[13px] text-white/70">Confirming this threat will trigger the Level 2 response protocol and notify local authorities.</p>
+                            <p className="text-[12px] text-white/70">Confirming this threat will trigger the Level 2 response protocol and notify local authorities.</p>
                             <div className="bg-red-500/10 border border-red-500/20 rounded-lg p-3 flex gap-3 shadow-inner">
                                 <AlertTriangle className="text-red-400 shrink-0" size={16} />
                                 <div className="text-[12px] text-red-200">Authorities will be dispatched to Site A Gate 2. Estimated arrival: 8 mins.</div>
@@ -1784,7 +1791,7 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                         </div>
                         <button
                             onClick={handleConfirmThreat}
-                            className="w-full h-10 rounded-lg bg-gradient-red text-white text-[13px] font-bold hover:opacity-90 flex items-center justify-center shadow-glow-red border border-red-500/20"
+                            className="w-full h-10 rounded-lg bg-gradient-red text-white text-[12px] font-bold hover:opacity-90 flex items-center justify-center shadow-glow-red border border-red-500/20"
                         >
                             Confirm and Dispatch
                         </button>
