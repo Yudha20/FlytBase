@@ -11,11 +11,15 @@ import { AlertDrawer } from './components/AlertDrawer';
 import { ActivityLogDrawer } from './components/ActivityLogDrawer';
 import { EvidenceRepository } from './components/EvidenceRepository';
 import { RunningTaskPill } from './components/RunningTaskPill';
+import { IntroScreen } from './components/IntroScreen';
 import { ToastMessage, Alert, LogEntry, Job } from './types';
 
 export default function App() {
   const [toasts, setToasts] = useState<ToastMessage[]>([]);
   const [isSitesVisible, setIsSitesVisible] = useState(false);
+  const [showIntro, setShowIntro] = useState(() => {
+    return !sessionStorage.getItem('hasSeenIntro');
+  });
 
   // Sync State
   const [isSyncing, setIsSyncing] = useState(false);
@@ -190,6 +194,11 @@ export default function App() {
     setSelectedAlertId(id);
   };
 
+  const handleDismissIntro = () => {
+    setShowIntro(false);
+    sessionStorage.setItem('hasSeenIntro', 'true');
+  };
+
   const handleOpenCaseFromRepo = (caseId: string) => {
     let targetAlert = alerts.find(a => a.id === caseId);
 
@@ -274,6 +283,7 @@ export default function App() {
 
   return (
     <div className="h-screen w-full bg-app text-white flex flex-col overflow-hidden relative">
+      {showIntro && <IntroScreen onDismiss={handleDismissIntro} />}
       <TopBar
         onSync={handleSync}
         isSyncing={isSyncing}
