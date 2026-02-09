@@ -25,25 +25,28 @@ export const IntroScreen: React.FC<IntroScreenProps> = ({ onDismiss }) => {
             className={`fixed inset-0 z-[100] flex items-center justify-center bg-[#121212] backdrop-blur-xl transition-opacity duration-700 ease-in-out ${isVisible && !isExiting ? 'opacity-100' : 'opacity-0'}`}
         >
             <div
-                className={`max-w-[480px] w-full px-8 py-12 flex flex-col items-center text-center transition-all duration-700 ease-out transform ${isVisible && !isExiting ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-8 opacity-0 scale-95'}`}
+                className={`max-w-[640px] w-full px-8 py-12 flex flex-col items-center text-center transition-all duration-700 ease-out transform ${isVisible && !isExiting ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-8 opacity-0 scale-95'}`}
             >
                 <h1 className="text-[36px] font-bold tracking-tight mb-4 bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">
                     FlytBase Ops Console
                 </h1>
 
-                <p className="text-[20px] text-white/50 leading-tight mb-8 max-w-[480px]">
-                    Intelligent mission monitoring and unified command<br />
-                    for your <span className="text-white/80 font-medium">autonomous drone fleets</span>.
+                <p className="text-[20px] text-white/50 leading-tight mb-8 max-w-full">
+                    Intelligent mission monitoring and unified<br />
+                    command for your <span className="text-white/80 font-medium">autonomous drone fleets</span>.
                 </p>
 
                 <button
                     onClick={handleContinue}
-                    className="group relative w-[200px] h-[56px] flex items-center justify-center bg-gradient-to-r from-blue-600 to-blue-500 text-white font-semibold rounded-2xl active:scale-[0.98] transition-all duration-300 border border-blue-400/20"
+                    className="group relative w-[160px] h-[40px] flex items-center justify-center bg-gradient-to-r from-blue-600 to-blue-500 text-white text-sm font-semibold rounded-xl active:scale-[0.98] transition-all duration-300 border border-blue-400/20 shadow-lg shadow-black/30"
                 >
-                    <div className="relative flex items-center justify-center">
-                        <span>Get Started</span>
-                        <div className="absolute left-full ml-1 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center">
-                            <ArrowRight size={20} />
+                    <div className="flex items-center justify-center relative w-full h-full pointer-events-none">
+                        <div className="w-4" aria-hidden="true" />
+                        <span className="ml-1 select-none">Get Started</span>
+                        <div className="w-4 ml-1 flex items-center justify-center">
+                            <div className="opacity-0 group-hover:opacity-100 translate-x-1 group-hover:translate-x-0 transition-all duration-300">
+                                <ArrowRight size={16} />
+                            </div>
                         </div>
                     </div>
                 </button>
