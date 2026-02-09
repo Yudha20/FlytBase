@@ -428,7 +428,7 @@ export const CommandBar: React.FC<CommandBarProps> = ({ onCommandSent }) => {
 
             {!inputValue && !isExecuting && !isReviewing && (
               <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none transition-opacity duration-200 flex items-center justify-center">
-                <div className="w-8 h-8 flex items-center justify-center text-[16px] text-white/40 font-medium bg-transparent">/</div>
+                <div className="w-8 h-8 flex items-center justify-center text-[14px] text-white/30">/</div>
               </div>
             )}
           </div>

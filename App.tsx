@@ -4,7 +4,7 @@ import { TopBar } from './components/TopBar';
 import { StatusLine } from './components/StatusLine';
 import { CommandBar } from './components/CommandBar';
 import { SitesGrid } from './components/SitesGrid';
-import { Footer } from './components/Footer';
+
 import { Toast } from './components/Toast';
 import { AlertRail } from './components/AlertRail';
 import { AlertDrawer } from './components/AlertDrawer';
@@ -296,7 +296,7 @@ export default function App() {
             alertCount={alerts.length}
           />
 
-          <main className="flex-grow flex flex-col items-center justify-start overflow-y-auto overflow-x-hidden relative z-0 pt-32 pb-32 transition-all duration-500 [scrollbar-gutter:stable]">
+          <main className="flex-grow flex flex-col items-center justify-start overflow-y-auto overflow-x-hidden relative z-0 pt-32 pb-16 [scrollbar-gutter:stable]">
             <div className="w-full max-w-[720px] px-4 sm:px-6 flex flex-col animate-slide-up">
               <div className="w-full mb-5 flex flex-col gap-4">
                 <StatusLine lastSync={lastSyncTime} onSync={handleSync} isSyncing={isSyncing} />
@@ -326,11 +326,13 @@ export default function App() {
               </div>
               <div className="mt-2 h-8 w-full" />
             </div>
+
+
           </main>
 
-          <div className={`fixed bottom-0 left-0 right-0 p-6 z-10 flex justify-center pointer-events-none transition-opacity duration-300 ${showBackdrop ? 'opacity-0' : 'opacity-100'}`}>
-            <Footer />
-          </div>
+
+
+
 
           <AlertRail
             alerts={alerts}

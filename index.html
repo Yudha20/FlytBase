@@ -1,109 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FlytBase Ops</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              app: '#121212', // Slightly darker/richer black
-              surface: '#1E1E1E', 
-              'surface-hover': '#262626',
-            },
-            boxShadow: {
-                'neu-flat': '0 2px 4px -1px rgba(0, 0, 0, 0.3), inset 0 1px 0 0 rgba(255, 255, 255, 0.05)',
-                'neu-hover': '0 8px 16px -4px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.2), inset 0 1px 0 0 rgba(255, 255, 255, 0.08)',
-                'neu-pressed': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.4)',
-                'glow-blue': '0 0 15px rgba(59, 130, 246, 0.15)',
-                'glow-red': '0 0 15px rgba(239, 68, 68, 0.15)',
-            },
-            backgroundImage: {
-                'gradient-surface': 'linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.0) 100%)',
-                'gradient-card': 'linear-gradient(145deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%)',
-                'gradient-blue': 'linear-gradient(180deg, #3B82F6 0%, #2563EB 100%)',
-                'gradient-red': 'linear-gradient(180deg, #EF4444 0%, #DC2626 100%)',
-            },
-            fontFamily: {
-              sans: ['Space Grotesk', 'sans-serif'],
-            },
-            borderColor: {
-              subtle: 'rgba(255, 255, 255, 0.08)',
-            },
-            animation: {
-              'slide-up': 'slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-              'fade-in-up': 'fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-              'breathe': 'breathe 2.2s infinite ease-in-out',
-              'draw': 'draw 1s ease-out forwards',
-              'scan': 'scan 3s linear infinite',
-              'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-            },
-            keyframes: {
-              slideUp: {
-                '0%': { transform: 'translateY(20px)', opacity: '0' },
-                '100%': { transform: 'translateY(0)', opacity: '1' },
-              },
-              fadeInUp: {
-                '0%': { transform: 'translateY(10px)', opacity: '0' },
-                '100%': { transform: 'translateY(0)', opacity: '1' },
-              },
-              breathe: {
-                '0%, 100%': { transform: 'scale(1)', opacity: '0.6' },
-                '50%': { transform: 'scale(1.15)', opacity: '1' },
-              },
-              draw: {
-                '0%': { strokeDashoffset: '100' },
-                '100%': { strokeDashoffset: '0' },
-              },
-              scan: {
-                '0%': { transform: 'translateY(-100%)' },
-                '100%': { transform: 'translateY(100%)' },
-              }
-            }
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FlytBase Ops</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            app: '#121212', // Slightly darker/richer black
+            surface: '#1E1E1E',
+            'surface-hover': '#262626',
           },
+          boxShadow: {
+            'neu-flat': '0 2px 4px -1px rgba(0, 0, 0, 0.3), inset 0 1px 0 0 rgba(255, 255, 255, 0.05)',
+            'neu-hover': '0 8px 16px -4px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.2), inset 0 1px 0 0 rgba(255, 255, 255, 0.08)',
+            'neu-pressed': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.4)',
+            'glow-blue': '0 0 15px rgba(59, 130, 246, 0.15)',
+            'glow-red': '0 0 15px rgba(239, 68, 68, 0.15)',
+          },
+          backgroundImage: {
+            'gradient-surface': 'linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.0) 100%)',
+            'gradient-card': 'linear-gradient(145deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%)',
+            'gradient-blue': 'linear-gradient(180deg, #3B82F6 0%, #2563EB 100%)',
+            'gradient-red': 'linear-gradient(180deg, #EF4444 0%, #DC2626 100%)',
+          },
+          fontFamily: {
+            sans: ['Space Grotesk', 'sans-serif'],
+          },
+          borderColor: {
+            subtle: 'rgba(255, 255, 255, 0.08)',
+          },
+          animation: {
+            'slide-up': 'slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+            'fade-in-up': 'fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+            'fade-in-out-up': 'fadeInOutUp 4s ease-in-out infinite',
+            'breathe': 'breathe 2.2s infinite ease-in-out',
+            'draw': 'draw 1s ease-out forwards',
+            'scan': 'scan 3s linear infinite',
+            'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          },
+          keyframes: {
+            slideUp: {
+              '0%': { transform: 'translateY(20px)', opacity: '0' },
+              '100%': { transform: 'translateY(0)', opacity: '1' },
+            },
+            fadeInUp: {
+              '0%': { transform: 'translateY(10px)', opacity: '0' },
+              '100%': { transform: 'translateY(0)', opacity: '1' },
+            },
+            fadeInOutUp: {
+              '0%': { transform: 'translateY(10px)', opacity: '0' },
+              '10%': { transform: 'translateY(0)', opacity: '1' },
+              '90%': { transform: 'translateY(0)', opacity: '1' },
+              '100%': { transform: 'translateY(-10px)', opacity: '0' },
+            },
+            breathe: {
+              '0%, 100%': { transform: 'scale(1)', opacity: '0.6' },
+              '50%': { transform: 'scale(1.15)', opacity: '1' },
+            },
+            draw: {
+              '0%': { strokeDashoffset: '100' },
+              '100%': { strokeDashoffset: '0' },
+            },
+            scan: {
+              '0%': { transform: 'translateY(-100%)' },
+              '100%': { transform: 'translateY(100%)' },
+            }
+          }
         },
-      }
-    </script>
-    <style>
-      body {
-        background-color: #121212;
-        color: white;
-        font-family: 'Space Grotesk', sans-serif;
-      }
-      /* Custom scrollbar to keep it dark/clean */
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #121212; 
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #333; 
-        border-radius: 4px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #444; 
-      }
-      /* Utility for hiding scrollbar but allowing scroll */
-      .no-scrollbar::-webkit-scrollbar {
-        display: none;
-      }
-      .no-scrollbar {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-      }
-      /* Utility for fade mask on overflow containers */
-      .mask-linear-fade {
-        mask-image: linear-gradient(to right, black 90%, transparent 100%);
-        -webkit-mask-image: linear-gradient(to right, black 90%, transparent 100%);
-      }
-    </style>
+      },
+    }
+  </script>
+  <style>
+    body {
+      background-color: #121212;
+      color: white;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    /* Custom scrollbar to keep it dark/clean */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #121212;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #333;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #444;
+    }
+
+    /* Utility for hiding scrollbar but allowing scroll */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Utility for fade mask on overflow containers */
+    .mask-linear-fade {
+      mask-image: linear-gradient(to right, black 90%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, black 90%, transparent 100%);
+    }
+  </style>
   <script type="importmap">
 {
   "imports": {
@@ -114,10 +130,12 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
+  <link rel="stylesheet" href="/index.css">
 </head>
-  <body>
-    <div id="root"></div>
+
+<body>
+  <div id="root"></div>
   <script type="module" src="/index.tsx"></script>
 </body>
+
 </html>
