@@ -32,17 +32,19 @@ export const IntroScreen: React.FC<IntroScreenProps> = ({ onDismiss }) => {
                 </h1>
 
                 <p className="text-[20px] text-white/50 leading-tight mb-8 max-w-[420px]">
-                    Seamless monitoring and unified control for your<br />
-                    <span className="text-white/80 font-medium">autonomous drone fleets</span>.
+                    Seamless monitoring and unified control<br />
+                    for your <span className="text-white/80 font-medium">autonomous drone fleets</span>.
                 </p>
 
                 <button
                     onClick={handleContinue}
-                    className="group relative flex items-center justify-center gap-0 hover:gap-4 px-12 py-4 bg-gradient-to-r from-blue-600 to-blue-500 text-white font-semibold rounded-2xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:shadow-[0_0_35px_rgba(37,99,235,0.5)] border border-blue-400/20"
+                    className="group relative w-[200px] h-[56px] flex items-center justify-center bg-gradient-to-r from-blue-600 to-blue-500 text-white font-semibold rounded-2xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:shadow-[0_0_35px_rgba(37,99,235,0.5)] border border-blue-400/20"
                 >
-                    <span>Get Started</span>
-                    <div className="w-0 group-hover:w-5 overflow-hidden transition-all duration-300 flex items-center justify-center">
-                        <ArrowRight size={20} className="opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="flex items-center gap-0 group-hover:gap-1 transition-all duration-300">
+                        <span>Get Started</span>
+                        <div className="w-0 group-hover:w-5 overflow-hidden transition-all duration-300 flex items-center">
+                            <ArrowRight size={20} className="opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        </div>
                     </div>
                 </button>
             </div>
