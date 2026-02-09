@@ -401,7 +401,7 @@ export const CommandBar: React.FC<CommandBarProps> = ({ onCommandSent }) => {
           <div className="relative flex-grow h-full flex items-center group">
             {!inputValue && !isExecuting && !isReviewing && (
               <div className="absolute inset-0 flex items-center pointer-events-none text-[16px] text-white/30">
-                <span key={placeholderIndex} className="animate-fade-in-up">Try: {HELPER_TEMPLATES[placeholderIndex]}</span>
+                <span key={placeholderIndex} className="animate-fade-in-out-up">{HELPER_TEMPLATES[placeholderIndex]}</span>
               </div>
             )}
 
