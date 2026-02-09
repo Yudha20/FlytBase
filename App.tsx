@@ -16,7 +16,7 @@ import { ToastMessage, Alert, LogEntry, Job } from './types';
 
 export default function App() {
   const [toasts, setToasts] = useState<ToastMessage[]>([]);
-  const [isSitesVisible, setIsSitesVisible] = useState(false);
+  const [isSitesVisible, setIsSitesVisible] = useState(true);
   const [showIntro, setShowIntro] = useState(() => {
     return !sessionStorage.getItem('hasSeenIntro');
   });
