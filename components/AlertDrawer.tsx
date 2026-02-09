@@ -1390,7 +1390,7 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                                                     <button
                                                         key={item}
                                                         onClick={() => toggleAttachment(item)}
-                                                        className={`px-3 py-1.5 rounded-full border text-[12px] flex items-center gap-2 transition-all ${isActive ? 'bg-blue-500/10 border-blue-500/30 text-blue-300' : 'bg-white/5 border-transparent text-white/40 hover:bg-white/10'}`}
+                                                        className={`px-3 py-1.5 rounded-md border text-[12px] flex items-center gap-2 transition-all whitespace-nowrap ${isActive ? 'bg-blue-500/10 border-blue-500/30 text-blue-300' : 'bg-white/5 border-transparent text-white/40 hover:bg-white/10'}`}
                                                     >
                                                         {isActive ? <Check size={12} /> : <Plus size={12} />}
                                                         {item}
