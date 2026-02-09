@@ -42,8 +42,10 @@ export const IntroScreen: React.FC<IntroScreenProps> = ({ onDismiss }) => {
                     <span>Get Started</span>
                     <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                 </button>
+            </div>
 
-                <div className="mt-12 text-[12px] text-white/20 uppercase tracking-[0.2em] font-medium">
+            <div className="absolute bottom-0 left-0 right-0 p-6 flex justify-center">
+                <div className="text-[12px] text-white/30 font-regular">
                     Enterprise Security • Live Operations
                 </div>
             </div>
