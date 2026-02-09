@@ -31,19 +31,19 @@ export const IntroScreen: React.FC<IntroScreenProps> = ({ onDismiss }) => {
                     FlytBase Ops Console
                 </h1>
 
-                <p className="text-[20px] text-white/50 leading-tight mb-8 max-w-[420px]">
-                    Seamless monitoring and unified control<br />
+                <p className="text-[20px] text-white/50 leading-tight mb-8 max-w-[480px]">
+                    Intelligent mission monitoring and unified command<br />
                     for your <span className="text-white/80 font-medium">autonomous drone fleets</span>.
                 </p>
 
                 <button
                     onClick={handleContinue}
-                    className="group relative w-[200px] h-[56px] flex items-center justify-center bg-gradient-to-r from-blue-600 to-blue-500 text-white font-semibold rounded-2xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 border border-blue-400/20"
+                    className="group relative w-[200px] h-[56px] flex items-center justify-center bg-gradient-to-r from-blue-600 to-blue-500 text-white font-semibold rounded-2xl active:scale-[0.98] transition-all duration-300 border border-blue-400/20"
                 >
-                    <div className="flex items-center gap-0 group-hover:gap-1 transition-all duration-300">
+                    <div className="relative flex items-center justify-center">
                         <span>Get Started</span>
-                        <div className="w-0 group-hover:w-5 overflow-hidden transition-all duration-300 flex items-center">
-                            <ArrowRight size={20} className="opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        <div className="absolute left-full ml-1 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center">
+                            <ArrowRight size={20} />
                         </div>
                     </div>
                 </button>
@@ -51,7 +51,7 @@ export const IntroScreen: React.FC<IntroScreenProps> = ({ onDismiss }) => {
 
             <div className="absolute bottom-0 left-0 right-0 p-6 flex justify-center">
                 <div className="text-[12px] text-white/30 font-regular">
-                    Enterprise Security • Live Operations
+                    Operator Control Centre
                 </div>
             </div>
         </div>
