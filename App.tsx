@@ -283,94 +283,99 @@ export default function App() {
 
   return (
     <div className="h-screen w-full bg-app text-white flex flex-col overflow-hidden relative">
-      {showIntro && <IntroScreen onDismiss={handleDismissIntro} />}
-      <TopBar
-        onSync={handleSync}
-        isSyncing={isSyncing}
-        onAlertIconClick={handleAlertIconClick}
-        onOpenActivityLog={toggleActivityLog}
-        onOpenEvidenceLog={toggleEvidenceRepo}
-        alertCount={alerts.length}
-      />
+      {showIntro ? (
+        <IntroScreen onDismiss={handleDismissIntro} />
+      ) : (
+        <>
+          <TopBar
+            onSync={handleSync}
+            isSyncing={isSyncing}
+            onAlertIconClick={handleAlertIconClick}
+            onOpenActivityLog={toggleActivityLog}
+            onOpenEvidenceLog={toggleEvidenceRepo}
+            alertCount={alerts.length}
+          />
 
-      <main className="flex-grow flex flex-col items-center justify-start overflow-y-auto overflow-x-hidden relative z-0 pt-32 pb-32 transition-all duration-500 [scrollbar-gutter:stable]">
-        <div className="w-full max-w-[720px] px-4 sm:px-6 flex flex-col animate-slide-up">
-          <div className="w-full mb-5 flex flex-col gap-4">
-            <StatusLine lastSync={lastSyncTime} onSync={handleSync} isSyncing={isSyncing} />
-            {activeJob && <RunningTaskPill job={activeJob} />}
-          </div>
-          <div className="w-full mb-8">
-            <CommandBar onCommandSent={(cmd) => {
-              addToast("Command sent to system");
-              setActiveJob({ id: 'job-new', type: cmd.split(' on ')[0] || 'Task', siteName: cmd.split(' on ')[1] || 'Site', status: 'Running', duration: 60 });
-            }} />
-          </div>
-          <div className="w-full flex flex-col gap-4">
-            <div
-              onClick={() => setIsSitesVisible(!isSitesVisible)}
-              className="flex items-center justify-between w-full cursor-pointer group select-none"
-            >
-              <h2 className="text-[16px] font-medium text-white/50 group-hover:text-white transition-colors text-left">Sites (3)</h2>
-              <div className="p-1 rounded-md group-hover:bg-surface-hover text-white/50 group-hover:text-white transition-colors">
-                {isSitesVisible ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+          <main className="flex-grow flex flex-col items-center justify-start overflow-y-auto overflow-x-hidden relative z-0 pt-32 pb-32 transition-all duration-500 [scrollbar-gutter:stable]">
+            <div className="w-full max-w-[720px] px-4 sm:px-6 flex flex-col animate-slide-up">
+              <div className="w-full mb-5 flex flex-col gap-4">
+                <StatusLine lastSync={lastSyncTime} onSync={handleSync} isSyncing={isSyncing} />
+                {activeJob && <RunningTaskPill job={activeJob} />}
               </div>
-            </div>
-            <div className={`grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${isSitesVisible ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>
-              <div className="overflow-hidden">
-                <SitesGrid />
+              <div className="w-full mb-8">
+                <CommandBar onCommandSent={(cmd) => {
+                  addToast("Command sent to system");
+                  setActiveJob({ id: 'job-new', type: cmd.split(' on ')[0] || 'Task', siteName: cmd.split(' on ')[1] || 'Site', status: 'Running', duration: 60 });
+                }} />
               </div>
+              <div className="w-full flex flex-col gap-4">
+                <div
+                  onClick={() => setIsSitesVisible(!isSitesVisible)}
+                  className="flex items-center justify-between w-full cursor-pointer group select-none"
+                >
+                  <h2 className="text-[16px] font-medium text-white/50 group-hover:text-white transition-colors text-left">Sites (3)</h2>
+                  <div className="p-1 rounded-md group-hover:bg-surface-hover text-white/50 group-hover:text-white transition-colors">
+                    {isSitesVisible ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                  </div>
+                </div>
+                <div className={`grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${isSitesVisible ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>
+                  <div className="overflow-hidden">
+                    <SitesGrid />
+                  </div>
+                </div>
+              </div>
+              <div className="mt-2 h-8 w-full" />
             </div>
+          </main>
+
+          <div className={`fixed bottom-0 left-0 right-0 p-6 z-10 flex justify-center pointer-events-none transition-opacity duration-300 ${showBackdrop ? 'opacity-0' : 'opacity-100'}`}>
+            <Footer />
           </div>
-          <div className="mt-2 h-8 w-full" />
-        </div>
-      </main>
 
-      {/* Dark Overlay for Focus Mode */}
-      <div
-        className={`fixed inset-0 bg-black/80 backdrop-blur-sm z-20 transition-opacity duration-500 pointer-events-none ${showBackdrop ? 'opacity-100' : 'opacity-0'}`}
-        aria-hidden="true"
-      />
+          <AlertRail
+            alerts={alerts}
+            selectedAlertId={selectedAlertId}
+            onSelectAlert={handleSelectAlert}
+            onClose={handleCloseRail}
+            isOpen={isRailVisible}
+            isDrawerOpen={isDrawerOpen}
+          />
 
-      <div className={`fixed bottom-0 left-0 right-0 p-6 z-10 flex justify-center pointer-events-none transition-opacity duration-300 ${showBackdrop ? 'opacity-0' : 'opacity-100'}`}>
-        <Footer />
-      </div>
+          <AlertDrawer
+            alert={selectedAlert}
+            isOpen={isDrawerOpen}
+            onClose={handleCloseDrawer}
+            onOpenAuditTrail={() => selectedAlert && openAuditTrail(selectedAlert.id)}
+            onShowToast={addToast}
+            initialViewMode={alertDrawerInitialMode}
+          />
 
-      <AlertRail
-        alerts={alerts}
-        selectedAlertId={selectedAlertId}
-        onSelectAlert={handleSelectAlert}
-        onClose={handleCloseRail}
-        isOpen={isRailVisible}
-        isDrawerOpen={isDrawerOpen}
-      />
+          <ActivityLogDrawer
+            logs={logs}
+            isOpen={drawerState.isOpen}
+            onClose={() => setDrawerState(prev => ({ ...prev, isOpen: false }))}
+            initialFilter={drawerState.filter}
+          />
 
-      <AlertDrawer
-        alert={selectedAlert}
-        isOpen={isDrawerOpen}
-        onClose={handleCloseDrawer}
-        onOpenAuditTrail={() => selectedAlert && openAuditTrail(selectedAlert.id)}
-        onShowToast={addToast}
-        initialViewMode={alertDrawerInitialMode}
-      />
+          <EvidenceRepository
+            isOpen={isEvidenceRepoOpen}
+            onClose={() => setIsEvidenceRepoOpen(false)}
+            onOpenCase={handleOpenCaseFromRepo}
+          />
 
-      <ActivityLogDrawer
-        logs={logs}
-        isOpen={drawerState.isOpen}
-        onClose={() => setDrawerState(prev => ({ ...prev, isOpen: false }))}
-        initialFilter={drawerState.filter}
-      />
+          <div className="fixed bottom-8 left-8 flex flex-col gap-2 pointer-events-none z-50">
+            {toasts.map((toast) => (
+              <Toast key={toast.id} message={toast.message} />
+            ))}
+          </div>
 
-      <EvidenceRepository
-        isOpen={isEvidenceRepoOpen}
-        onClose={() => setIsEvidenceRepoOpen(false)}
-        onOpenCase={handleOpenCaseFromRepo}
-      />
-
-      <div className="fixed bottom-8 left-8 flex flex-col gap-2 pointer-events-none z-50">
-        {toasts.map((toast) => (
-          <Toast key={toast.id} message={toast.message} />
-        ))}
-      </div>
+          {/* Dark Overlay for Focus Mode */}
+          <div
+            className={`fixed inset-0 bg-black/80 backdrop-blur-sm z-20 transition-opacity duration-500 pointer-events-none ${showBackdrop ? 'opacity-100' : 'opacity-0'}`}
+            aria-hidden="true"
+          />
+        </>
+      )}
     </div>
   );
 }

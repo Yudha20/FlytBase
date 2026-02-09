@@ -766,8 +766,8 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                                     ) : (
                                         <div className="p-8 text-center max-w-md">
                                             <FileText size={48} className="text-white/20 mx-auto mb-4" />
-                                            <h4 className="text-white font-medium text-lg mb-2">{selectedItem.label}</h4>
-                                            <p className="text-white/60 text-sm leading-relaxed">
+                                            <h4 className="text-white font-medium text-[20px] mb-2">{selectedItem.label}</h4>
+                                            <p className="text-white/60 text-[16px] leading-relaxed">
                                                 {selectedItem.content || "No text content available."}
                                             </p>
                                         </div>
