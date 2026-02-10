@@ -32,23 +32,22 @@ export const IntroScreen: React.FC<IntroScreenProps> = ({ onDismiss }) => {
                 </h1>
 
                 <p className="text-[20px] text-white/50 leading-tight mb-8 max-w-full">
-                    Intelligent mission monitoring and unified<br />
-                    command for your <span className="text-white/80 font-medium">autonomous drone fleets</span>.
+                    Monitor missions and control your drone fleet<br />
+                    from a single <span className="text-white/80 font-medium">operations console</span>.
                 </p>
 
                 <button
                     onClick={handleContinue}
                     className="group relative w-[160px] h-[40px] flex items-center justify-center bg-gradient-to-r from-blue-600 to-blue-500 text-white text-sm font-semibold rounded-xl active:scale-[0.98] transition-all duration-300 border border-blue-400/20 shadow-lg shadow-black/30"
                 >
-                    <div className="flex items-center justify-center relative w-full h-full pointer-events-none">
-                        <div className="w-4" aria-hidden="true" />
-                        <span className="ml-1 select-none">Get Started</span>
-                        <div className="w-4 ml-1 flex items-center justify-center">
-                            <div className="opacity-0 group-hover:opacity-100 translate-x-1 group-hover:translate-x-0 transition-all duration-300">
+                    <span className="inline-flex items-center gap-[6px] select-none pointer-events-none">
+                        <span>Get Started</span>
+                        <span className="w-4 flex items-center justify-center">
+                            <span className="opacity-0 group-hover:opacity-100 translate-x-1 group-hover:translate-x-0 transition-all duration-300">
                                 <ArrowRight size={16} />
-                            </div>
-                        </div>
-                    </div>
+                            </span>
+                        </span>
+                    </span>
                 </button>
             </div>
 
