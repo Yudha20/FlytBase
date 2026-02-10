@@ -1163,10 +1163,10 @@ export const AlertDrawer: React.FC<AlertDrawerProps> = ({ alert, isOpen, onClose
                             {/* Site Status Drill */}
                             <button
                                 onClick={() => setActiveMetricDrill(activeMetricDrill === 'lock' ? null : 'lock')}
-                                className="flex items-center gap-1.5 transition-colors hover:opacity-80"
+                                className={`flex items-center gap-1.5 transition-colors ${activeMetricDrill === 'lock' ? (isPerimeterLocked ? 'text-emerald-400' : 'text-white') : 'text-white/70 hover:text-white'}`}
                             >
-                                <Shield size={12} className={isPerimeterLocked ? "text-emerald-400" : "text-white/40"} />
-                                <span className="text-[12px]" style={{ color: isPerimeterLocked ? "#34d399" : "rgba(255,255,255,0.6)" }}>
+                                <Shield size={12} className={activeMetricDrill === 'lock' ? (isPerimeterLocked ? 'text-emerald-400' : 'text-white/60') : (isPerimeterLocked ? "text-emerald-500/60" : "text-white/40")} />
+                                <span>
                                     Site: {isPerimeterLocked ? "Locked" : "Open"}
                                 </span>
                             </button>
