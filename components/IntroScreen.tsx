@@ -38,7 +38,7 @@ export const IntroScreen: React.FC<IntroScreenProps> = ({ onDismiss }) => {
 
                 <button
                     onClick={handleContinue}
-                    className="group relative w-[160px] h-[40px] flex items-center justify-center bg-gradient-to-r from-blue-600 to-blue-500 text-white text-sm font-semibold rounded-xl active:scale-[0.98] transition-all duration-300 border border-blue-400/20 shadow-lg shadow-black/30"
+                    className="group relative w-[160px] h-[44px] flex items-center justify-center bg-gradient-to-r from-blue-600 to-blue-500 text-white text-sm font-semibold rounded-xl active:scale-[0.98] transition-all duration-300 border border-blue-400/20 shadow-lg shadow-black/30"
                 >
                     <span className="inline-flex items-center gap-[6px] select-none pointer-events-none">
                         <span>Get Started</span>
