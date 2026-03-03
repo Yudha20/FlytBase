@@ -1,53 +1,63 @@
-<div align="center">
-  <img src="assets/banner.png" alt="FlytBase Ops Console Banner" width="100%">
-</div>
+# FlytBase Ops Console
 
-# FlytBase Ops Console 🚁
-
-> **FlytBase Ops Console** is a high-performance, command-centric dashboard meticulously designed for large-scale drone fleet operations. Built with a focus on **situational awareness** and **operational efficiency**, it provides a "zero-clutter" environment that empowers operators to manage complex missions with absolute clarity.
+FlytBase Ops Console is a high-performance, command-centric dashboard meticulously designed for large-scale drone fleet operations. Built with a focus on situational awareness and operational efficiency, it provides a streamlined environment that empowers operators to manage complex missions with absolute clarity.
 
 ---
 
-## 🎯 What is it?
+## What is it?
 
-The FlytBase Ops Console is a centralized mission control hub. It acts as the "brain" for drone operators, aggregating telemetry, live video feeds, and system alerts into a single, unified interface. Unlike traditional dashboards that overwhelm with data, this console utilizes a **Command-First design philosophy**, ensuring that every pixel serves a purpose and every action is just a keystroke away.
+The FlytBase Ops Console serves as a centralized mission control hub. It aggregates telemetry, live video feeds, and system alerts into a single, unified interface. Moving away from traditional, data-heavy dashboards, this console utilizes a Command-First design philosophy to ensure that critical actions are readily accessible and data is presented without unnecessary clutter.
 
-## 💡 How is it Useful?
+![FlytBase Ops Console Overview](assets/ui_overview.png)
+*Figure 1: Main command interface and telemetry overview, providing a zero-clutter environment.*
 
-In critical drone operations—whether it's security surveillance, site inspection, or emergency response—seconds matter. This console is useful because it:
+## Operational Benefits
 
-*   **Reduces Cognitive Load**: The minimalist dark-mode interface minimizes distractions, allowing operators to focus on mission-critical data.
-*   **Accelerates Response Time**: With an integrated **Command Bar**, operators can issue fleet-wide instructions (like "Inspect Gate 2" or "Return to Home") instantly without digging through menus.
-*   **Automates Incident Workflows**: When the system detects an intrusion or anomaly, it doesn't just buzz—it generates an AI-powered summary, tracks autonomous drone dispatches, and prepares an evidence file automatically.
-*   **Centralizes Multi-Site Ops**: Manage multiple geographical locations simultaneously using the **Sites Grid**, ensuring whole-fleet visibility from a single seat.
-*   **Simplifies Compliance**: Every action, alert, and telemetry change is logged in a secure **Audit Trail**, making post-mission reporting and regulatory compliance seamless.
+In critical drone operations, efficiency and speed are paramount. The console provides several key operational advantages:
+
+*   **Optimized Cognitive Load**: The minimalist dark-mode interface reduces visual distractions, enabling operators to maintain focus on mission-critical data.
+*   **Accelerated Response Time**: An integrated Command Bar allows operators to issue fleet-wide instructions instantly, bypassing multi-step menus.
+*   **Automated Incident Workflows**: Upon detecting anomalies, the system automatically generates an AI-powered summary, tracks autonomous drone dispatches, and prepares corresponding evidence records.
+*   **Multi-Site Centralization**: Operators can monitor multiple geographical locations simultaneously through the Sites Grid, ensuring comprehensive fleet visibility from a single interface.
+*   **Regulatory Compliance**: All actions, alerts, and telemetry changes are systematically logged in a secure Audit Trail, streamlining post-mission reporting and compliance procedures.
+
+![Incident Alerts and Dashboards](assets/ui_alerts.png)
+*Figure 2: Intelligent alert system displaying active incidents and AI summaries.*
 
 ---
 
-## ✨ Key Features
+## Key Features
 
-- ⌨️ **Command-First Interface**: Issue global commands through an intuitive, persistent command bar.
-- � **Real-time Sync & Telemetry**: Live updates ensuring operators are always looking at the "Ground Truth."
-- �️ **Intelligent Alert System**: AI-driven summaries of incidents (e.g., "1 person detected • Vehicle mismatch") to provide instant context.
-- 🗺️ **High-Density Monitoring**: A scalable grid view of all active sites and assets.
-- � **Evidence & Audit Repository**: A dedicated vault for historical incident logs and media recordings.
-- 🎨 **Premium Professional Aesthetic**: A bespoke design system utilizing Montserrat typography and optimized contrast for 24/7 operations rooms.
+- **Command-First Interface**: Execute global commands effectively through an intuitive, persistent command bar.
+- **Real-time Synchronization**: Receive live telemetry updates to ensure operators maintain an accurate baseline of the operational environment.
 
-## 🛠️ Tech Stack
+![Multi-Site Grid View](assets/ui_sites.png)
+*Figure 3: Scalable Sites Grid designed for monitoring all active sites and assets efficiently.*
 
-- **React & TypeScript**: Type-safe frontend for mission-critical reliability.
-- **Vite**: Ultra-fast build and development cycles.
-- **Lucide Icons**: Professional-grade vector iconography.
-- **Bespoke Design System**: Custom-engineered CSS tokens for a high-performance, low-latency UI.
+- **Intelligent Alert System**: Utilize AI-driven summaries for incidents to gain immediate context and actionable intelligence.
+- **Evidence and Audit Repository**: Maintain a dedicated secure vault for historical incident logs, audit trails, and media recordings.
 
-## 🚀 Getting Started
+![Evidence and Audit Repository](assets/ui_evidence.png)
+*Figure 4: Secure repository for historical logs and media recording playback.*
+
+- **High-Density Monitoring**: Access a scalable grid view designed for monitoring all active sites and assets efficiently.
+- **Professional Aesthetic**: Leverage a custom design system characterized by optimized contrast, built for 24/7 operations centers.
+
+## Technical Architecture
+
+- **Frontend Framework**: React and TypeScript for a robust, type-safe architecture.
+- **Build System**: Vite for accelerated development and compilation cycles.
+- **Iconography**: Lucide Icons for clean and functional vector graphics.
+- **Styling**: A custom-engineered CSS design system optimized for high-performance and low-latency rendering.
+
+## Getting Started
 
 1. **Install Dependencies**:
    ```bash
    npm install
    ```
 
-2. **Launch Console**:
+2. **Launch Development Server**:
    ```bash
    npm run dev
    ```
@@ -60,5 +70,5 @@ In critical drone operations—whether it's security surveillance, site inspecti
 ---
 
 <div align="center">
-  <strong>FlytBase Ops Console</strong> — Precision in every pixel.
+  <strong>FlytBase Ops Console</strong>
 </div>
