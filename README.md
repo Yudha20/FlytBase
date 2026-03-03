@@ -2,27 +2,43 @@
   <img src="assets/banner.png" alt="FlytBase Ops Console Banner" width="100%">
 </div>
 
-# FlytBase Ops Console
+# FlytBase Ops Console 🚁
 
-> A calm, zero-clutter command-first home for drone operations monitoring.
+> **FlytBase Ops Console** is a high-performance, command-centric dashboard meticulously designed for large-scale drone fleet operations. Built with a focus on **situational awareness** and **operational efficiency**, it provides a "zero-clutter" environment that empowers operators to manage complex missions with absolute clarity.
 
-The **FlytBase Ops Console** is a premium, high-performance dashboard designed for modern drone fleet management. Built with a focus on clarity, speed, and real-time situational awareness, it provides operators with a sophisticated interface to monitor, manage, and respond to incidents with precision.
+---
+
+## 🎯 What is it?
+
+The FlytBase Ops Console is a centralized mission control hub. It acts as the "brain" for drone operators, aggregating telemetry, live video feeds, and system alerts into a single, unified interface. Unlike traditional dashboards that overwhelm with data, this console utilizes a **Command-First design philosophy**, ensuring that every pixel serves a purpose and every action is just a keystroke away.
+
+## 💡 How is it Useful?
+
+In critical drone operations—whether it's security surveillance, site inspection, or emergency response—seconds matter. This console is useful because it:
+
+*   **Reduces Cognitive Load**: The minimalist dark-mode interface minimizes distractions, allowing operators to focus on mission-critical data.
+*   **Accelerates Response Time**: With an integrated **Command Bar**, operators can issue fleet-wide instructions (like "Inspect Gate 2" or "Return to Home") instantly without digging through menus.
+*   **Automates Incident Workflows**: When the system detects an intrusion or anomaly, it doesn't just buzz—it generates an AI-powered summary, tracks autonomous drone dispatches, and prepares an evidence file automatically.
+*   **Centralizes Multi-Site Ops**: Manage multiple geographical locations simultaneously using the **Sites Grid**, ensuring whole-fleet visibility from a single seat.
+*   **Simplifies Compliance**: Every action, alert, and telemetry change is logged in a secure **Audit Trail**, making post-mission reporting and regulatory compliance seamless.
+
+---
 
 ## ✨ Key Features
 
-- 🎯 **Command-First Interface**: Rapidly issue commands to your fleet through an intuitive, streamlined command bar.
-- 📡 **Real-time Synchronization**: Stay updated with live telemetry and data syncing across the entire console.
-- 🚨 **Intelligent Incident Management**: High-fidelity alert workflows with AI-driven summaries and autonomous dispatch tracking.
-- 🗺️ **Comprehensive Site Overviews**: Monitor multiple sites simultaneously with a high-density, interactive grid view.
-- 📁 **Evidence Repository**: Securely store and review logs, stream recordings, and incident audit trails.
-- 🎨 **Premium Aesthetic**: A sleek, dark-mode interface built for prolonged professional use, featuring Montserrat typography and a minimalist design system.
+- ⌨️ **Command-First Interface**: Issue global commands through an intuitive, persistent command bar.
+- � **Real-time Sync & Telemetry**: Live updates ensuring operators are always looking at the "Ground Truth."
+- �️ **Intelligent Alert System**: AI-driven summaries of incidents (e.g., "1 person detected • Vehicle mismatch") to provide instant context.
+- 🗺️ **High-Density Monitoring**: A scalable grid view of all active sites and assets.
+- � **Evidence & Audit Repository**: A dedicated vault for historical incident logs and media recordings.
+- 🎨 **Premium Professional Aesthetic**: A bespoke design system utilizing Montserrat typography and optimized contrast for 24/7 operations rooms.
 
 ## 🛠️ Tech Stack
 
-- **React & TypeScript**: For a robust, type-safe application architecture.
-- **Vite**: High-speed development and build tooling.
-- **Lucide Icons**: Crisp, professional iconography.
-- **Custom CSS**: A bespoke design system optimized for console-grade performance.
+- **React & TypeScript**: Type-safe frontend for mission-critical reliability.
+- **Vite**: Ultra-fast build and development cycles.
+- **Lucide Icons**: Professional-grade vector iconography.
+- **Bespoke Design System**: Custom-engineered CSS tokens for a high-performance, low-latency UI.
 
 ## 🚀 Getting Started
 
@@ -31,12 +47,12 @@ The **FlytBase Ops Console** is a premium, high-performance dashboard designed f
    npm install
    ```
 
-2. **Run Development Server**:
+2. **Launch Console**:
    ```bash
    npm run dev
    ```
 
-3. **Build for Production**:
+3. **Deploy Production Build**:
    ```bash
    npm run build
    ```
@@ -44,5 +60,5 @@ The **FlytBase Ops Console** is a premium, high-performance dashboard designed f
 ---
 
 <div align="center">
-  Built with ❤️ for the future of Drone Operations.
+  <strong>FlytBase Ops Console</strong> — Precision in every pixel.
 </div>
